@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     include('server.php');
 ?>
 
@@ -17,7 +16,7 @@
     <nav>
         <div class="navbar">
             <div class="nav-logo">
-                <a href="index.php"> Car Rental</a> 
+                <a href="index.php"> Car Rental</a>
             </div>
             <hl class="nav-menu" id="myMenu" >
                 <li> <a href="index.php"> Home</a> </li>
