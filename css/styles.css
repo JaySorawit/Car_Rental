@@ -1,8 +1,62 @@
+@font-face {
+    font-family: Ubuntu-Regular;
+    src: url('../fonts/ubuntu/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+    font-family: Ubuntu-Bold;
+    src: url('../fonts/ubuntu/Ubuntu-Bold.ttf');
+}
+
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container-md, .container-sm, .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container-lg, .container-md, .container-sm, .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+
+    max-width: 1320px;
+  }
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Ubuntu-Regular';
+    /* font-family: 'Montserrat', sans-serif; */  
 }
 
 /*----------------------------------------------------*/
@@ -13,13 +67,12 @@
     width: 100%;
     display: flex;
     background-color: black;
-    /* color: aliceblue; */
     justify-content: space-between;
     align-items: center;
     position: relative;
 }
 
-.navbar h1{
+.navbar ul li a{
     font-size: 18px;
     font-weight: 400;
 }
@@ -27,11 +80,12 @@
 .nav-logo{
     width: 15%;
     align-items: center;
-    margin-left: 10%;
+    margin-left: 5%;
 }
 
 .nav-logo a{
     text-decoration: none;
+    font-size: 20px;
     color: white;
 }
 
@@ -69,10 +123,16 @@
     /* background-color: #0d6efd; */
 }
 
+#menu-signup, #menu-login {
+    margin: 0 auto;
+    margin-top: 2rem;
+    align-items: center;
+    width: 150px;
+}
+
 .signup-button{
     width:100px;
     height:35px;
-    margin-right:7px;
     border: 1px solid #0d6efd;
     border-radius:5px;
     background-color: white;
@@ -105,7 +165,7 @@
     color:#fff;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 1000px) {
     .nav-logo{
         width: 100%;
         display: flex;
@@ -146,6 +206,14 @@
     }
 }
 
+@media (min-width: 1400px) {
+    .navbar{
+        width: 1320px;
+        align-items: center;
+        margin: 0 auto;
+    }
+  }
+
 .nav-menu-active {
     display: block !important;
 }
@@ -183,7 +251,7 @@
     transform: translate(0, -11px) rotate(45deg);
   }
 
-  @media only screen and (min-width: 700px) {
+  @media only screen and (min-width: 1000px) {
     #menu-login, #menu-signup {
         display: none;
     }

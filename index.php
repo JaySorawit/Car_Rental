@@ -16,7 +16,7 @@
 </head>
 <body>
     <?php
-        // Check if user is logged in
+        Check if user is logged in
         if (!$loggedIn) {
             include 'navbaruser.php';    
         } else {

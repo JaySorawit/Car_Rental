@@ -8,7 +8,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>About Us</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>About Us</title>
 </head>
 <body>
     <?php
@@ -19,8 +20,11 @@
             include 'navbarclient.php';
         }
     ?>
-  <h1>About Us</h1>
-  <p>We are a company that specializes in...</p>
+    <div class="container-sm">
+        <h1>About Us</h1>
+        <p>We are a company that specializes in...</p>
+    </div>
+
   <footer>
         <p> Copyright © 2023.</p>
     </footer>

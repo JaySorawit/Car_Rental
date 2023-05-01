@@ -1,5 +1,6 @@
 <?php
     session_start();
+
     include('server.php');
 ?>
 
@@ -13,10 +14,10 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <nav>
+    <nav width="100%" height= "50px" style=" background-color: black;">
         <div class="navbar">
             <div class="nav-logo">
-                <a href="index.php"> Car Rental</a>
+                <a href="index.php"> Car Rental</a> 
             </div>
             <hl class="nav-menu" id="myMenu" >
                 <li> <a href="index.php"> Home</a> </li>

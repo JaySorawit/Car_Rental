@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <nav>
+    <nav width="100%" height= "50px" style=" background-color: black;">
         <div class="navbar">
             <div class="nav-logo">
                 <a href="index.php"> Car Rental</a> 
             </div>
-            <hl class="nav-menu" id="myMenu" >
+            <ul class="nav-menu" id="myMenu" >
                 <li> <a href="index.php"> Home</a> </li>
                 <li> <a href="aboutUs.php"> About</a> </li>
                 <li> <a href="#"> Contact</a> </li>
@@ -21,7 +21,7 @@
                 <li id="menu-signup"> <a href="#"> My profile</a> </li>
                 <li id="menu-signup"> <a href="#"> My rental car</a> </li>
                 <li id="menu-signup"> <a href="logout.php"> Log out</a> </li>
-            </hl>
+            </ul>
             <div class="nav-right">
                 <button class="login-button">Rent out</button>
                 <div class="profile-dropdown"> 
