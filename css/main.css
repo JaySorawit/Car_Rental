@@ -1,0 +1,150 @@
+@font-face {
+    font-family: Ubuntu-Regular;
+    src: url('../fonts/ubuntu/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+    font-family: Ubuntu-Bold;
+    src: url('../fonts/ubuntu/Ubuntu-Bold.ttf');
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    font-family: Ubuntu-Regular, sans-serif;
+}
+
+.center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-card::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    z-index: -1;
+    background-image: url('../img/bg.jpg');
+    background-size: cover;
+    background-position: 50% 75%;
+    background-repeat: no-repeat;
+    background-color: #000000;
+}
+
+.login-card::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    z-index: -1;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/bg.jpg');
+    background-size: cover;
+    background-position: 50% 75%;
+    background-repeat: no-repeat;
+}
+
+.login-content {
+    width: 420px;
+    border-radius: 10px;
+}
+
+.login-title {
+    font-family: Ubuntu-Bold;
+    text-shadow: 1px 1px 2px black;
+}
+
+.login-form {
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.login-table {
+    display: block;
+}
+
+tbody {
+    display: block;
+}
+
+.login-info {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 20px 0;
+}
+
+.login-input {
+    display: block;
+    width: 100%;
+    height: 70px;
+    padding: 0 5px 0 80px;
+}
+
+.login-input:focus {
+    background-color: #f2f2f2;
+    border-bottom: 1px solid blue;
+}
+
+input,
+input:focus {
+    border: none;
+    outline: none;
+}
+
+i {
+    color: #000000;
+}
+
+.login-submit {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.login-submit-btn {
+    font-family: Ubuntu-Bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 150px;
+    height: 42px;
+    border-radius: 20px;
+    background: rgb(68, 68, 227);
+    background: linear-gradient(90deg, rgba(68, 68, 227, 1) 9%, rgba(0, 142, 255, 1) 100%);
+}
+
+.login-submit-btn:hover {
+    background: linear-gradient(90deg, rgb(21, 21, 153) 0%, rgba(153, 51, 255, 1) 100%);
+    cursor: pointer;
+}
+
+.login-form a:hover {
+    color: #9c27b0;
+    text-decoration: underline;
+}
+
+::placeholder {
+    color: #b7b7b7;
+}
+
+.fa-user, .fa-lock {
+    color: #4444e3;
+}
+
+  
+  
