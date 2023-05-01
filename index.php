@@ -24,7 +24,7 @@
         }
     ?>
     <main>
-
+        
     </main>
 
     <footer>
