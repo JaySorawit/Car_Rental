@@ -368,6 +368,14 @@ main {
     padding: 2rem 0;
 }
 
+.aboutus {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    background-color: aqua;
+  }  
+
 /* ------------------------------------------------ */
 /* Footer */
 
