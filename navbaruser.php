@@ -19,13 +19,13 @@
             <div class="nav-logo">
                 <a href="index.php"> Car Rental</a> 
             </div>
-            <hl class="nav-menu" id="myMenu" >
+            <ul class="nav-menu" id="myMenu" >
                 <li> <a href="index.php"> Home</a> </li>
                 <li> <a href="aboutUs.php"> About</a> </li>
-                <li> <a href="#"> Contact</a> </li>
+                <li> <a href="contact.php"> Contact</a> </li>
                 <li id="menu-login"> <a href="LoginForm.php"> Log In</a> </li>
                 <li id="menu-signup"> <a href="#"> Sign up</a> </li>
-            </hl>
+            </ul>
             <div class="nav-login" id="mylogin">
                 <a href="LoginForm.php"> <button class="login-button">Log In</button> </a>
                 <button class="signup-button">Sign up</button>

@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    $loggedIn = isset($_SESSION['loggedIn']) ? $_SESSION['loggedIn'] : false;
+
+    include('server.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +23,7 @@
             <ul class="nav-menu" id="myMenu" >
                 <li> <a href="index.php"> Home</a> </li>
                 <li> <a href="aboutUs.php"> About</a> </li>
-                <li> <a href="#"> Contact</a> </li>
+                <li> <a href="contact.php"> Contact</a> </li>
                 <li id="menu-signup"> <a href="#"> Rent out</a> </li>
                 <li id="menu-signup"> <a href="#"> My profile</a> </li>
                 <li id="menu-signup"> <a href="#"> My rental car</a> </li>

@@ -70,6 +70,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    z-index: 1000
 }
 
 .navbar ul li a{
@@ -123,6 +124,10 @@
     /* background-color: #0d6efd; */
 }
 
+.nav-menu li:hover a {
+    color: #fe6721;
+}
+
 #menu-signup, #menu-login {
     margin: 0 auto;
     margin-top: 2rem;
@@ -133,34 +138,36 @@
 .signup-button{
     width:100px;
     height:35px;
-    border: 1px solid #0d6efd;
-    border-radius:5px;
+    border: none;
+    border-radius: 25px;
     background-color: white;
     font-size:17px;
     font-weight:400;
-    color: #0d6efd;
+    color: #fe6721;
     cursor:pointer;
 }
 
 .login-button{
     width:100px;
     height:35px;
-    border: 1px solid #0d6efd;
-    border-radius:5px;
+    border: none;
+    border-radius: 25px;
     font-size:17px;
     font-weight:400;
     color:#fff;
-    background-color:#0d6efd;
+    background-image: linear-gradient(to right, red , orange);
     cursor:pointer;
 }
 
 .login-button:hover{
-    background-color:#1859c9db;
+    color:#fff;
+    background-image: none ;
+    background-color: #fe6721;
     border: none;
 }
 
 .signup-button:hover{
-    background-color:#1859c9db;
+    background-color: #fe6721;
     border: none;
     color:#fff;
 }
@@ -184,9 +191,9 @@
         margin-top: 2rem;
     }
 
-    .nav-menu li:hover a {
-        color: #0d6efd;
-    }
+    /* .nav-menu li:hover a {
+        color: #fe6721;
+    } */
     
 
     .nav-login button{
@@ -357,7 +364,7 @@
 }
 
 .profile-dropdown .menu ul li:hover a {
-    color: #0d6efd;
+    color: #fe6721;
 }
 
 
@@ -368,13 +375,74 @@ main {
     padding: 2rem 0;
 }
 
+/* ------------------------------------------------ */
+/* About Us */
+
 .aboutus {
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    width: 75%;
+    line-height: 35px;
+    margin: 50px auto;
     text-align: center;
-    justify-content: center;
-    background-color: aqua;
   }  
+
+  /* ------------------------------------------------ */
+/* Contact page */
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    line-height: 35px;
+    margin: 50px auto;
+    text-align: center;
+  }  
+
+  .contact-des {
+    width: 75%;
+    display: flex;
+    line-height: 35px;
+    margin: 30px auto;
+  }
+
+  .memberofgroup {
+    display: flex;
+    margin: 30px 50px;
+    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .member {
+    width: 270px;
+    padding: 30px;
+    /* height: 500px; */
+    /* border : 1px solid black; */
+    border:none;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px black;
+  }
+
+  .member img {
+    width:200px; 
+    height:200px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .member h4 {
+    line-height: 150%;
+  }
+
+  .member h4 span {
+    opacity:0.5; 
+    font-size:13px;
+  }
+
+  .member p {
+    margin-top: 5px;
+  }
 
 /* ------------------------------------------------ */
 /* Footer */
