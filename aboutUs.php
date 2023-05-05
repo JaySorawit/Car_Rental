@@ -15,8 +15,8 @@
     <?php
         // Check if user is logged in
         if (!$loggedIn) {
-        //     include 'navbaruser.php';    
-        // } else {
+            include 'navbaruser.php';    
+        } else {
             include 'navbarclient.php';
         }
     ?>

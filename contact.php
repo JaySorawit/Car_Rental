@@ -11,15 +11,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Contact</title>
 </head>
 <body>
     <?php
         // Check if user is logged in
         if (!$loggedIn) {
-        //     include 'navbaruser.php';    
-        // } else {
+            include 'navbaruser.php';    
+        } else {
             include 'navbarclient.php';
         }
     ?>
@@ -38,17 +38,17 @@
                 <div class="member">
                     <img src="./img/Jay.jpg" >
                     <h4> Sorawit Mokthaisong <br> <span > 64070501049</span> <hr>  </h4>
-                    <p >Sorawit.mok@kmutt.ac.th </p>
+                    <p >Sorawit.mokt@kmutt.ac.th </p>
                 </div>
                 <div class="member">
                     <img src="./img/Phan.jpg" >
                     <h4> Natchanon Kammanee <br> <span > 64070501062 </span> <hr>  </h4>
-                    <p> Natchanon.kam@kmutt.ac.th</p>
+                    <p> Natchanon.kamm@kmutt.ac.th</p>
                 </div>
                 <div class="member">
                     <img src="./img/Ohm.jpeg">
                     <h4> Woraphol Sae-Ku <br> <span > 64070501084 </span> <hr>  </h4>
-                    <p> Woraphol.sae@kmutt.ac.th</p>
+                    <p> Woraphol.sae-@kmutt.ac.th</p>
                 </div>
             </div>
         </div>

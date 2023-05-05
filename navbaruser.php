@@ -1,6 +1,4 @@
 <?php
-    session_start();
-
     include('server.php');
 ?>
 
@@ -24,11 +22,11 @@
                 <li> <a href="aboutUs.php"> About</a> </li>
                 <li> <a href="contact.php"> Contact</a> </li>
                 <li id="menu-login"> <a href="LoginForm.php"> Log In</a> </li>
-                <li id="menu-signup"> <a href="#"> Sign up</a> </li>
+                <li id="menu-signup"> <a href="RegisterForm.php"> Sign up</a> </li>
             </ul>
             <div class="nav-login" id="mylogin">
                 <a href="LoginForm.php"> <button class="login-button">Log In</button> </a>
-                <button class="signup-button">Sign up</button>
+                <a href="RegisterForm.php"><button class="signup-button">Sign up</button></a>
             </div>
             <div class="ham-menu" onclick="toggleHam(this)">
                 <div class="bar1"></div>

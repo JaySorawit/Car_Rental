@@ -3,18 +3,18 @@ function toggleHam(x) {
     let myMenu = document.getElementById('myMenu');
     let mylogin = document.getElementById('mylogin');
   
-    if(myMenu.style.display === 'none') {
-      myMenu.style.display = 'block';
+      if(myMenu.className === 'nav-menu') {
+        myMenu.className += ' nav-menu-active';
     } 
     else{
-      myMenu.style.display = 'none';
+        myMenu.className = 'nav-menu';
     }
-  
-    if(mylogin.style.display === 'none') {
-      mylogin.style.display = 'block';
+
+    if(mylogin.className === 'nav-login') {
+        mylogin.className += ' nav-login-active';
     } 
     else{
-      mylogin.style.display = 'none';
+        mylogin.className = 'nav-login';
     }
   
     // // Add event listener to document object
@@ -46,13 +46,13 @@ function menuToggle() {
     const toggleMenu = document.querySelector(".menu");
     toggleMenu.classList.toggle("active");
     
-    document.addEventListener("click", function(e) {
-        const clickInsideMenu = toggleMenu.contains(e.target);
+    // document.addEventListener("click", function(e) {
+    //     const clickInsideMenu = toggleMenu.contains(e.target);
 
-        if (!clickInsideMenu && toggleMenu.classList.contains("active")) {
-                toggleMenu.className += ' menu';
-        }
-    });
+    //     if (!clickInsideMenu && toggleMenu.classList.contains("active")) {
+    //             toggleMenu.className += ' menu';
+    //     }
+    // });
   }
   
 
