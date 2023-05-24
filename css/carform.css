@@ -1,0 +1,37 @@
+@font-face {
+    font-family: Ubuntu-Regular;
+    src: url('../fonts/ubuntu/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+    font-family: Ubuntu-Bold;
+    src: url('../fonts/ubuntu/Ubuntu-Bold.ttf');
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: Ubuntu-Regular, sans-serif;
+}
+
+body {
+    background-image: url("../img/component/bg2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.title {
+    font-family: Ubuntu-Bold, sans-serif;
+    letter-spacing: 1.25px;
+}
+
+.row {
+    width: 1200px;
+}

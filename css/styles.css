@@ -464,6 +464,8 @@ main {
 .profile-container{
   margin: 0 auto;
   padding-top: 20px;
+  max-width: 1200px;
+  height: 100%;
   align-items: center;
   background-color: #fff;
   align-items: center;
