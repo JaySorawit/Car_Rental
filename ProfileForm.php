@@ -20,6 +20,8 @@
     $tel_no = $client['tel_no'];
     $banking_account = $client['banking_account'];
     $bank_name = $client['bank_name'];
+    $lessor_state = $client['lessor_state'];
+    $driverlicense = $client['driving_license_no'];
 
     $sql2 = "SELECT * FROM interested WHERE client_id ='$client_id';";
     $result = mysqli_query($con, $sql2);
@@ -181,6 +183,34 @@
                                     <label>Bank account:</label><br>
                                     <input class="input-text" type="text" id="bank_account" name="bank_account" size="35"
                                         placeholder="<?php echo $banking_account ?>" value=""><br>
+                                </div>
+                            </div>
+                            <div class="input-box-group">
+                                <div class="inputboxhide" id="myDrive">
+                                    <label>Driver license:</label><br>
+                                    <div class="inputboxdate">
+                                    <?php 
+                                        if (!empty($driverlicense)){
+                                            echo "<span>$driverlicense</span>";
+                                        }
+                                        else {
+                                            echo "<span>-</span>";
+                                        }
+                                    ?>
+                                    </div>
+                                </div>
+                                <div class="inputboxhide" id="mylessor">
+                                    <label>Lessor:</label><br>
+                                    <div class="inputboxdate">
+                                    <?php
+                                        if ($lessor_state == 1){
+                                            echo "<span>Yes</span>";
+                                        }
+                                        else{
+                                            echo "<span>No</span>";
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>

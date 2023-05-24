@@ -438,11 +438,12 @@ main {
   object-fit: cover;
 }
 
-.member h4 {
+.member h5 {
+  margin-top: 5px;
   line-height: 150%;
 }
 
-.member h4 span {
+.member h5 span {
   opacity:0.5; 
   font-size:13px;
 }
@@ -504,7 +505,7 @@ main {
   font-weight: 600;
 }
 
-#myPass, .myPass {
+#myPass, .myPass, .inputboxdate-active, .inputboxhide-active{
   display: none;
 }
 
@@ -512,8 +513,8 @@ main {
   display: block;
 }
 
-.inputboxdate-active{
-  display: none;
+.input-box-hide{
+  width: 250px;
 }
 
 .inputboxdate{
@@ -602,9 +603,9 @@ main {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-left: 20px;
-  gap: 30px;
+  gap: 20px;
   justify-content: center;
 }
 

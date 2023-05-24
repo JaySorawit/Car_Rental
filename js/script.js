@@ -50,6 +50,8 @@ function editToggle(btn) {
 
   let myPass = document.getElementById('myPass');
   let mydate = document.getElementById('myDate');
+  let myDrive = document.getElementById('myDrive');
+  let mylessor = document.getElementById('mylessor');
 
   const myPassElements = document.querySelectorAll('.myPass');
   myPassElements.forEach(function(myPass) {
@@ -61,6 +63,20 @@ function editToggle(btn) {
   } 
   else{
     mydate.className = 'inputboxdate';
+  }
+
+  if(myDrive.className === 'inputboxhide') {
+    myDrive.className += ' inputboxhide-active';
+  } 
+  else{
+    myDrive.className = 'inputboxhide';
+  }
+
+  if(mylessor.className === 'inputboxhide') {
+    mylessor.className += ' inputboxhide-active';
+  } 
+  else{
+    mylessor.className = 'inputboxhide';
   }
   
   if (myPass.classList.contains('myPass-active')) {

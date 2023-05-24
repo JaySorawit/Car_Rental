@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Rental</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
     <nav width="100%" height= "50px" style=" background-color: black;">
