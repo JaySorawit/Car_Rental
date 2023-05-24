@@ -1,6 +1,10 @@
 <?php
 session_start();
 $loggedIn = isset($_SESSION['loggedIn']) ? $_SESSION['loggedIn'] : false;
+if (!isset($_SESSION['loggedIn'])) {
+    header('Location: login.php');
+    exit;
+}
 include('server.php');
 
 $_SESSION['license_plate'] = 'aaa'; // สมมติว่า $_SESSION['license_plate'] ส่ง 'aaa' เข้ามา

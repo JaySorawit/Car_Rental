@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['loggedIn'])) {
+    header('Location: login.php');
+    exit;
+}
 $lessor_state = $_SESSION['lessor_state'];
 
 if ($lessor_state == 1) {
