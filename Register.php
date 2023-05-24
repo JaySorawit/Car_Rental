@@ -5,7 +5,6 @@ if (!$con) {
     die('Could not connect: ' . mysqli_error());
 }
 
-
 $email = $_POST['email'];
 $password = $_POST['password'];
 $c_password = $_POST['c_password'];

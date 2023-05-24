@@ -36,17 +36,17 @@
             </div>
             <div class="memberofgroup">
                 <div class="member">
-                    <img src="./img/Jay.jpg" >
+                    <img src="./img/admin/Jay.jpg" >
                     <h4> Sorawit Mokthaisong <br> <span > 64070501049</span> <hr>  </h4>
                     <p >Sorawit.mokt@kmutt.ac.th </p>
                 </div>
                 <div class="member">
-                    <img src="./img/Phan.jpg" >
+                    <img src="./img/admin/Phan.jpg" >
                     <h4> Natchanon Kammanee <br> <span > 64070501062 </span> <hr>  </h4>
                     <p> Natchanon.kamm@kmutt.ac.th</p>
                 </div>
                 <div class="member">
-                    <img src="./img/Ohm.jpeg">
+                    <img src="./img/admin/Ohm.jpeg">
                     <h4> Woraphol Sae-Ku <br> <span > 64070501084 </span> <hr>  </h4>
                     <p> Woraphol.sae-@kmutt.ac.th</p>
                 </div>

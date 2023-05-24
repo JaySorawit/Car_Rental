@@ -1,5 +1,17 @@
 <?php
+    session_start();
     include('server.php');
+
+    $email = $_SESSION['email'];
+    $fname = $_SESSION['fname'];
+    $lname = $_SESSION['lname'];
+    $lessor_state = $_SESSION['lessor_state'];
+
+    if ($lessor_state != 1) {
+        $rentout = 'LessorForm.php';
+    } else {
+        $rentout = 'CarForm.php';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -21,22 +33,22 @@
                 <li> <a href="index.php"> Home</a> </li>
                 <li> <a href="aboutUs.php"> About</a> </li>
                 <li> <a href="contact.php"> Contact</a> </li>
-                <li id="menu-signup"> <a href="LessorForm.php"> Rent out</a> </li>
-                <li id="menu-signup"> <a href="#"> My profile</a> </li>
+                <li id="menu-signup"> <a href="<?php echo $rentout; ?>"> Rent out</a> </li>
+                <li id="menu-signup"> <a href="profileForm.php"> My Profile</a> </li>
                 <li id="menu-signup"> <a href="#"> My rental car</a> </li>
                 <li id="menu-signup"> <a href="logout.php"> Log out</a> </li>
             </ul>
             <div class="nav-right">
-                <a href="LessorForm.php"><button class="login-button">Rent out</button></a>
+                <a href="<?php echo $rentout; ?>"><button class="login-button">Rent out</button></a>
                 <div class="profile-dropdown"> 
                     <div class="profile" onclick="menuToggle();">
                         <img src="img/icon/icons8-male-user-48.png" />
                         <img src="img/icon/icons8-sort-down-30.png" width="20px" height ="20px" style="margin:auto 0;"/>
                     </div>
                     <div class="menu">
-                        <h3>Someone Famous<br /></h3>
+                        <h3><?php echo $fname.' '.$lname; ?><br /></h3>
                         <ul>
-                            <li> <img src="img/icon/user-avatar.png" /><a href="#">My profile</a> </li>
+                            <li> <img src="img/icon/user-avatar.png" /><a href="profileForm.php">My profile</a> </li>
                             <li> <img src="img/icon/car.png" /><a href="#">My rental car</a> </li>
                             <li> <img src="img/icon/exit.png" width="15px" height="15px" style="margin-left: 3px;"/><a href="Logout.php">Log out</a></li>
                         </ul>

@@ -1,5 +1,10 @@
 <?php 
     session_start();
+    if (!isset($_SESSION['loggedIn'])) {
+        header('Location: login.php');
+        exit;
+    }
+
     include 'server';
     ?>
 
@@ -15,6 +20,8 @@
         <?php include 'navbarclient.php' ?>
         <main>
             <h1> test</h1>
+            <button id="edit-button" class="profile-submit" >Edit</button>
+            <input type="submit" class="profile-submit" value="Submit">
         </main>
         
     </body>

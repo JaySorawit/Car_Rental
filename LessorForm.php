@@ -1,6 +1,13 @@
 <?php
 session_start();
-$con = mysqli_connect("localhost", "root", "", "CarRental_DB");
+$lessor_state = $_SESSION['lessor_state'];
+
+if ($lessor_state == 1) {
+    header("Location: CarForm.php");
+    exit();
+}
+
+$con = mysqli_connect("localhost", "root", "", "carrental_db");
 // Check connection
 if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -60,7 +67,7 @@ if (mysqli_connect_errno()) {
             </div>
 
             <div class="login-left col d-flex justify-content-center align-items-center border-start">
-                <img src="img/lessor-logo.jpg" alt="lessor-image" class="login-img">
+                <img src="img/component/lessor-logo.jpg" alt="lessor-image" class="login-img">
             </div>
 
         </div>

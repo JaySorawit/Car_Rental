@@ -1,10 +1,6 @@
 <?php
 session_start();
-$con = mysqli_connect("localhost", "root", "", "CarRental_DB");
-// Check connection
-if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+include('server.php');
 
 $banknumber = $_POST['banknumber'];
 $bankname = $_POST['bankname'];
@@ -40,6 +36,7 @@ if (empty($banknumber)) {
             }
 
             // $_SESSION['success'] = "You have successfully registered as a lessor.";
+            $_SESSION['lessor_state'] = 1;
             header("location: index.php");
         } else {
             $_SESSION['error'] = "Something went wrong";

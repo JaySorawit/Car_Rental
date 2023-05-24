@@ -1,0 +1,233 @@
+@font-face {
+    font-family: Ubuntu-Regular;
+    src: url('../fonts/ubuntu/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+    font-family: Ubuntu-Bold;
+    src: url('../fonts/ubuntu/Ubuntu-Bold.ttf');
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: Ubuntu-Regular, sans-serif;
+}
+
+body {
+    background-image: url("../img/bg2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.row {
+    width: 1200px;
+}
+
+.title {
+    font-family: Ubuntu-Bold, sans-serif;
+    letter-spacing: 1.25px;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: #fe6722;
+}
+
+.car-img {
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.rental-left {
+    padding: 19px 50px;
+}
+
+.car-info {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fe6722;
+}
+
+.lessor-info {
+    margin-bottom: 0 !important;
+}
+
+.rental-right {
+    padding: 50px 50px 30px 50px;
+}
+
+.price-car {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.pickdrop-info {
+    margin-top: 95px;
+    padding: 20px 20px 7px 20px;
+}
+
+.date-info {
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.time-info {
+    padding: 7px;
+}
+
+
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.personal-info {
+    padding: 20px 20px 7px 20px;
+}
+
+.card-info {
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    width: 210px;
+}
+
+.cost-info {
+    padding: 20px 20px 7px 20px;
+}
+
+.total-price {
+    color: #fe6722;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 40px;
+    background: #fe6722;
+    border: none;
+}
+
+.submit-btn:hover {
+    background: #e04a05;
+    cursor: pointer;
+}
+
+.fa-circle-user,
+.fa-calendar,
+.fa-clock,
+.fa-id-card,
+.fa-credit-card,
+.fa-cc-visa,
+.fa-calendar-xmark,
+.fa-key {
+    color: #fe6722;
+}
+
+#popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    overflow-y: scroll;
+}
+
+#popup {
+    background-color: white;
+    width: 50%;
+    max-width: 720px;
+    padding: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#close-popup {
+    margin-top: 20px;
+}
+
+.input-license {
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.input-license-already:focus {
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    height: 100px;
+}
+
+@media (max-width: 768px) {
+    body {
+        background-size: auto;
+        background-repeat: no-repeat;
+    }
+    .row {
+        width: 360px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .rent-form {
+        margin-bottom: 0px !important;
+    }
+
+    .col-7 {
+        width: 100% !important;
+    }
+
+    .col-5 {
+        width: 100% !important;
+    }
+
+    .rental-left {
+        padding: 20px;
+    }
+
+    .car-img {
+        width: 100%;
+    }
+
+    .rental-right {
+        display: block;
+        position: relative;
+        padding: 20px;
+        top: -80px;
+        
+        padding: 0px;
+        margin-bottom: 2rem;
+    }
+}
