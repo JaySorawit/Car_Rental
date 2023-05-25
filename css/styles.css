@@ -455,7 +455,7 @@ main {
 /* ------------------------------------------------ */
 /* Profile Page */
 
-.title h1{
+.titleProfile h1{
   margin: 0 auto;
   text-align: center;
   color: #fe6721;
@@ -515,6 +515,11 @@ main {
   display: block;
 }
 
+input::placeholder{
+  opacity: 1.5;
+  color: black;
+}
+
 .input-box-hide{
   width: 250px;
 }
@@ -530,7 +535,7 @@ main {
 }
 
 .inputboxdate  span{
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .input-text {
@@ -617,7 +622,6 @@ main {
   flex-wrap: wrap;
   margin-top: 10px;
   margin-left: 20px;
-  justify-content: center;
 }
 
 .input-box-group {

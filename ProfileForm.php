@@ -42,6 +42,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <?php include "navbarclient.php"; ?>
     <title>My Profile</title>
     <style>
     body {
@@ -54,13 +55,12 @@
 </head>
 
 <body>
-    <?php include "navbarclient.php"; ?>
     <div class="container-md">
         <div class="profile-container">
-            <div class="title">
+            <div class="titleProfile">
                 <h1>Profile</h1>
             </div>
-            <hr style="opacity 0.5;">
+            <hr style="opacity: 0.5;width: 90%;margin: 20px auto;">
             <div class="alertbox">
                 <?php if (isset($_SESSION['error'])) { ?>
                 <div class="regis-error alert alert-danger mt-1" role="alert">
