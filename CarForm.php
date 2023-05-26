@@ -5,7 +5,7 @@
         exit;
     }
 
-    include 'sever.php';
+    include('server.php');
 
     // $sql1 = "SELECT * FROM address;";
     // $result1 = mysqli_query($con,$sql1);

@@ -7,7 +7,7 @@ if (!isset($_SESSION['loggedIn'])) {
 }
 include('server.php');
 
-$_SESSION['license_plate'] = 'aaa'; // สมมติว่า $_SESSION['license_plate'] ส่ง 'aaa' เข้ามา
+$_SESSION['license_plate'] = $carId ; // สมมติว่า $_SESSION['license_plate'] ส่ง 'aaa' เข้ามา
 
 $license_plate = $_SESSION['license_plate'];
 $query1 = "SELECT * FROM car_info WHERE license_plate = '$license_plate'";
