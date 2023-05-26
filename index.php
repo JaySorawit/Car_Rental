@@ -155,13 +155,13 @@
         
         <div class="transmission-wrapper">
         <label>
-            <input type="radio" name="transmission" value="Automatic"> Automatic
+            <input type="radio" name="transmission" value="auto"> Automatic
         </label>
         </div>
 
         <div class="transmission-wrapper">
         <label>
-            <input type="radio" name="transmission" value="Manual Transmission"> Manual Transmission
+            <input type="radio" name="transmission" value="manual"> Manual Transmission
         </label>
         </div>
 
@@ -203,6 +203,22 @@
                 }
                 });
                 }
+                function search() {
+    var startDate = document.getElementById('start-date').value;
+    var endDate = document.getElementById('end-date').value;
+    var province = document.getElementById('province_selected').value;
+    var district = document.getElementById('district_selected').value;
+    var brand = document.getElementById('brand_selected').value;
+    var transmission = document.querySelector('input[name="transmission"]:checked').value;
+
+    // Perform any necessary validations before redirecting to viewcars.php
+    // For example, check if all required fields are filled
+
+    // Redirect to viewcars.php with the search parameters
+    var params = "?start-date=" + startDate + "&end-date=" + endDate + "&province=" + province + "&district=" + district + "&brand=" + brand + "&transmission=" + transmission;
+    window.location.href = "viewcars.php" + params;
+}
+
                 
                 $(document).on('click', '#suggestions-list1 li', function() {
                     var selectedOption = $(this).text();

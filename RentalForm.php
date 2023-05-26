@@ -4,6 +4,7 @@ if (!isset($_SESSION['loggedIn'])) {
     header('Location: login.php');
     exit;
 }
+$carId = $_GET['car_id'];
 include 'Rental.php';
 $email = $_SESSION['email'];
 ?>
