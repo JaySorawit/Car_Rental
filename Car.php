@@ -67,15 +67,15 @@
     }
     else {
 
-        echo $_FILES['image_path']['tmp_name'];
-        echo $targetFilepath;
-        echo basename($_FILES['image_path']['name']);
+        // echo $_FILES['image_path']['tmp_name'];
+        // echo $targetFilepath;
+        // echo basename($_FILES['image_path']['name']);
 
-        if(move_uploaded_file($_FILES['image_path']['tmp_name'], $targetFilepath)){
-            echo "Yessss";
-        }else{
-            echo "Nooo"
-        }
+        // if(move_uploaded_file($_FILES['image_path']['tmp_name'], $targetFilepath)){
+        //     echo "Yessss";
+        // }else{
+        //     echo "Nooo"
+        // }
 
         // $sql2 = "SELECT model_id FROM brand_info WHERE model_name = '$model_name' AND brand = '$brand';";
         // $result2 = mysqli_query($con,$sql2);
