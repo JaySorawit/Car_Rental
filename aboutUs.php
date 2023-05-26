@@ -7,8 +7,9 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <title>About Us</title>
 </head>
 <body>

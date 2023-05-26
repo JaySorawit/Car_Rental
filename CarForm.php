@@ -5,13 +5,51 @@
         exit;
     }
 
+    $client_id = $_SESSION['client_id'];
+
     include('server.php');
 
-    // $sql1 = "SELECT * FROM address;";
-    // $result1 = mysqli_query($con,$sql1);
-    // $address = mysqli_fetch_assoc($result1);
+    $sql = "SELECT c.*, b.brand, b.model_name, a.province
+        FROM car_info c
+        INNER JOIN brand_info b ON c.model_id = b.model_id
+        INNER JOIN address a ON c.district = a.district AND c.zipcode = a.zipcode
+        WHERE c.client_id = '$client_id'";
 
-?>
+    $result = mysqli_query($con, $sql);
+    if (!$result) {
+        die('Error: ' . mysqli_error($con));
+    }
+
+    $license_plates = array();
+    $model_ids = array();
+    $brands = array();
+    $model_names = array();
+    $year_cars = array();
+    $transmissions = array();
+    $colors = array();
+    $seats = array();
+    $price_per_days = array();
+    $image_paths = array();
+    $provinces = array();
+    $districts = array();
+    $zipcodes = array();
+
+    while ($car = mysqli_fetch_assoc($result)) {
+        $license_plates[] = $car['license_plate'];
+        $model_ids[] = $car['model_id'];
+        $brands[] = $car['brand'];
+        $model_names[] = $car['model_name'];
+        $year_cars[] = $car['year_car'];
+        $transmissions[] = $car['transmission'];
+        $colors[] = $car['color'];
+        $seats[] = $car['seat'];
+        $price_per_days[] = $car['price_per_day'];
+        $image_paths[] = $car['image_path'];
+        $districts[] = $car['district'];
+        $zipcodes[] = $car['zipcode'];
+        $provinces[] = $car['province'];
+    }
+    ?>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -66,7 +104,7 @@
                             <div class="carinput-box-group">
                                 <div class="carinput-box">
                                     <label>License plate:</label>
-                                    <input class="carinput" type="text" id="license_plate" name="license_plate" value="" required=><br>
+                                    <input class="carinput" type="text" id="license_plate" name="license_plate" maxlength="10" value="" required=><br>
                                 </div>
                             </div>
                             <div class="carinput-box-group">
@@ -175,20 +213,35 @@
                     </div>   
                 </div>
             </form>
-            <div class="carshow">
-                <hr style="opacity: 0.5;width: 90%;margin: 20px auto 0;">
-                <div class="titlecar" style="margin-bottom:30px"> My car </div>
-                <div class="listcar">
-                    <div class="boxofcar">
-                        <div class="imgofcar">
-                            <img src="img/car/aaa.jpg">
-                        </div>
-                        <div class="infocar">
-
-                        </div>
+            <?php if (!empty($license_plates)) { ?>
+                <div class="carshow">
+                    <hr style="opacity: 0.5; width: 90%; margin: 20px auto 0;">
+                    <div class="titlecar" style="margin-bottom: 30px;">My car</div>
+                    <div class="listcar">
+                        <?php foreach ($license_plates as $index => $license_plate) { ?>
+                            <div class="boxofcar">
+                                <div class="imgofcar">
+                                    <img src="<?php echo $image_paths[$index]; ?>">
+                                </div>
+                                <div class="infocar">
+                                    <p>License Plate: <?php echo $license_plate; ?></p>
+                                    <p>Brand: <?php echo $brands[$index]; ?></p>
+                                    <p>Model Name: <?php echo $model_names[$index]; ?></p>
+                                    <p>Year: <?php echo $year_cars[$index]; ?></p>
+                                    <p>Transmission: <?php echo $transmissions[$index]; ?></p>
+                                    <p>Color: <?php echo $colors[$index]; ?></p>
+                                    <p>Seat: <?php echo $seats[$index]; ?></p>
+                                    <p>Price per Day: <?php echo $price_per_days[$index]; ?></p>
+                                    <p>Province: <?php echo $provinces[$index]; ?></p>
+                                    <p>District: <?php echo $districts[$index]; ?></p>
+                                    <p>Zipcode: <?php echo $zipcodes[$index]; ?></p>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
+
         </div>
         </div>
         

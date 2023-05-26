@@ -64,6 +64,12 @@ margin-left: auto;
   /* font-family: 'Montserrat', sans-serif; */  
 }
 
+body {
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
 /*----------------------------------------------------*/
 /*  Navigation bar */
 
@@ -708,4 +714,5 @@ footer {
   color: white;
   text-align: center;
   padding: 2rem;
+  margin-top: auto !important;
 }

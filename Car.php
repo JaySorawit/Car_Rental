@@ -36,21 +36,6 @@
     else{
         $newFilename = "car_" . $license_plate . "." . pathinfo($filename, PATHINFO_EXTENSION);
     }
-
-    echo $license_plate;
-    echo $brand;
-    echo $model_name;
-    echo $model_id;
-    echo $year_car; 
-    echo $transmission;
-    echo $color; 
-    echo $seat;
-    echo $price_per_day;
-    echo $file["name"];
-    echo $newFilename;
-    echo $province;
-    echo $district;
-    echo $zipcode;
     
     $targetDir = "./img/car/";
     $targetFilepath = $targetDir . $newFilename;
@@ -60,38 +45,54 @@
     $license_result = mysqli_query($con,$check_license_plate);
     $checklicense = mysqli_fetch_assoc($license_result);
     // echo $checklicense['license_plate'];
-    if ($license_plate == $checklicense ['license_plate']) {
+    if ($license_plate == $checklicense['license_plate']) {
         $_SESSION['warning'] = "The license_plate has already been taken.";
         header("location: CarForm.php");
         exit();
     }
     else {
 
-        // echo $_FILES['image_path']['tmp_name'];
-        // echo $targetFilepath;
-        // echo basename($_FILES['image_path']['name']);
+        echo $_FILES['image_path']['tmp_name'];
+        echo $targetFilepath;
+        echo basename($_FILES['image_path']['name']);
 
-        // if(move_uploaded_file($_FILES['image_path']['tmp_name'], $targetFilepath)){
-        //     echo "Yessss";
-        // }else{
-        //     echo "Nooo"
-        // }
+        if(move_uploaded_file($_FILES['image_path']['tmp_name'], $targetFilepath)){
+            echo "Yessss";
+        }
+        else{
+            echo "Nooo";
+        }
 
-        // $sql2 = "SELECT model_id FROM brand_info WHERE model_name = '$model_name' AND brand = '$brand';";
-        // $result2 = mysqli_query($con,$sql2);
-        // $model_id = mysqli_fetch_assoc($result2)['model_id'];
+        // echo $license_plate;
+        // echo $brand;
+        // echo $model_name;
+        // echo $model_id;
+        // echo $year_car; 
+        // echo $transmission;
+        // echo $color; 
+        // echo $seat;
+        // echo $price_per_day;
+        // echo $file["name"];
+        // echo $newFilename;
+        // echo $province;
+        // echo $district;
+        // echo $zipcode;
+
+        $sql2 = "SELECT model_id FROM brand_info WHERE model_name = '$model_name' AND brand = '$brand';";
+        $result2 = mysqli_query($con,$sql2);
+        $model_id = mysqli_fetch_assoc($result2)['model_id'];
 
         
-        // $sql3 = "INSERT INTO car_info (license_plate ,client_id ,model_id ,price_per_day 
-        // ,transmission ,year_car ,seat ,color ,district ,zipcode	,image_path) 
-        // VALUES ('$license_plate', '$client_id', '$model_id', '$price_per_day', '$transmission',
-        // '$year_car', '$seat', '$color', '$district', '$zipcode', '$targetFilepath');";
-        // if (!mysqli_query($con, $sql3)) {
-        //     die('error: ' . mysqli_error($con));
-        // }
+        $sql3 = "INSERT INTO car_info (license_plate ,client_id ,model_id ,price_per_day 
+        ,transmission ,year_car ,seat ,color ,district ,zipcode	,image_path) 
+        VALUES ('$license_plate', '$client_id', '$model_id', '$price_per_day', '$transmission',
+        '$year_car', '$seat', '$color', '$district', '$zipcode', '$targetFilepath');";
+        if (!mysqli_query($con, $sql3)) {
+            die('error: ' . mysqli_error($con));
+        }
 
-        // $_SESSION['success'] = "You have Successfully rented out a car!";
-        // header("location: CarForm.php");
+        $_SESSION['success'] = "You have Successfully rented out a car!";
+        header("location: CarForm.php");
     }
     
     
