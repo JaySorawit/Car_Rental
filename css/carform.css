@@ -49,9 +49,12 @@ body {
   }
   
   .carradio-inputs .carradio input {
-    display: none;
+    margin-top: 23px;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
   }
-  
+
   .carradio-inputs .carradio .name {
     display: flex;
     cursor: pointer;

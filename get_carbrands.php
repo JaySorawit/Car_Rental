@@ -1,7 +1,7 @@
 <?php
 include 'server.php';
 
-$sql = "SELECT DISTINCT brand FROM brand_info";
+$sql = "SELECT DISTINCT brand FROM brand_info ORDER BY brand_info.brand ASC";
 $result = mysqli_query($con, $sql);
 
 $brands = array();

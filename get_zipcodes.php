@@ -2,8 +2,9 @@
 include 'server.php';
 
 $district = $_GET['district'];
+$province = $_GET['province'];
 
-$sql = "SELECT zipcode FROM address WHERE district = '$district'";
+$sql = "SELECT DISTINCT zipcode FROM address WHERE district = '$district' AND province = '$province';";
 $result = mysqli_query($con, $sql);
 
 $zipcodes = array();

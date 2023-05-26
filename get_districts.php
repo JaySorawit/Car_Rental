@@ -2,7 +2,7 @@
 include 'server.php';
 
 $province = $_GET['province'];
-$sql = "SELECT district FROM address WHERE province = '$province' ORDER BY address.district ASC";
+$sql = "SELECT DISTINCT district FROM address WHERE province = '$province' ORDER BY address.district ASC";
 $result = mysqli_query($con, $sql);
 
 $districts = array();
