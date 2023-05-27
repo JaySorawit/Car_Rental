@@ -21,7 +21,7 @@ body {
 }
 
 body {
-    background-color: #fff;
+    /* background-color: #fff; */
     /* background-size: cover;
     background-repeat: no-repeat;
     background-position: center; */
@@ -204,9 +204,9 @@ input[type=file] {
     align-items: center;
     justify-content: center;
     background-color: #fff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 20px;
-    width: 80%;
+    max-width: 1000px;
     gap: 30px;
     margin: 0 auto;
 }
@@ -238,7 +238,7 @@ input[type=file] {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-width: 70%;
+    max-width: 700px;
     margin-top: 10px;
     gap: 30px;
     justify-content: center;
@@ -269,3 +269,39 @@ input[type=file] {
     flex-wrap: wrap;
 }
 
+.imgofcarforrent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 500px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.imgofcarforrent img {
+    max-width: 500px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.rentalinfo{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 990px) {
+    .carinfotitle h1{
+        display: flex;
+        color: #fe6721;
+        text-align: center;
+    }
+
+    .carinfotitle {
+        display: flex;
+        color: #fe6721;
+        text-align: center;
+        justify-content: center;
+    }
+  }

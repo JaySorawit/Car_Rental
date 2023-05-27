@@ -255,7 +255,7 @@
                                         </div>
                                         <form action="rentinfo.php" method="post">
                                             <input type="hidden" name="license_plate" value="<?php echo $license_plate; ?>">
-                                            <input type="submit" class="carsubmit" name="rentinfo" style="margin:0 auto;" value="Delete">
+                                            <input type="submit" class="carsubmit" name="rentinfo" style="margin:0 auto;" value="Rent info">
                                         </form>
                                     </div>
                                 </div>
@@ -271,6 +271,16 @@
         <footer>
             <p> Copyright © 2023. </p>
         </footer>
+
+        <?php if (isset($_SESSION['delete_success'])) { ?>
+            <div>
+                <?php
+                echo $_SESSION['delete_success'];
+                unset($_SESSION['delete_success']);
+                ?>
+            </div>
+        <?php } ?>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         
         <script>

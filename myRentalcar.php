@@ -4,10 +4,10 @@ $loggedIn = isset($_SESSION['loggedIn']) ? $_SESSION['loggedIn'] : false;
 include('server.php');
 $email = $_SESSION['email'];
 $query = "SELECT * FROM rent_info 
-JOIN car_info ON rent_info.license_plate = car_info.license_plate 
-JOIN brand_info ON car_info.model_id = brand_info.model_id 
-JOIN address ON car_info.district = address.district AND car_info.zipcode = address.zipcode
-WHERE rent_info.client_id = (select client_id from client where email='$email');";
+        JOIN car_info ON rent_info.license_plate = car_info.license_plate 
+        JOIN brand_info ON car_info.model_id = brand_info.model_id 
+        JOIN address ON car_info.district = address.district AND car_info.zipcode = address.zipcode
+        WHERE rent_info.client_id = (select client_id from client where email='$email');";
 
 $conn = mysqli_connect('localhost', 'root', '', 'carrental_db');
 
