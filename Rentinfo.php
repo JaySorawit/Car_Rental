@@ -34,6 +34,9 @@
     while ($row = mysqli_fetch_assoc($result2)) {
         $rentals[] = $row; // Append each row to the rentals array
     }
+
+    $money = 0;
+    $count = 0;
 ?>
 
 <!DOCTYPE html>
@@ -146,8 +149,8 @@
         </div>
 
         <form action="Deletecar.php" class="d-flex justify-content-center" method="post">
-            <input type="hidden" name="license_plate" value="aaa">
-            <button class="btn btn-danger m-2" style="height:40px">Delete car</button>
+            <input type="hidden" name="license_plate"  value="<?php echo $license_plate; ?>">
+            <button class="btn btn-danger m-3"  style="height:40px">Delete</button>
         </form>
     </div>
     </div>
