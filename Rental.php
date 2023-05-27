@@ -1,13 +1,12 @@
 <?php
-session_start();
+//session_start();
 $loggedIn = isset($_SESSION['loggedIn']) ? $_SESSION['loggedIn'] : false;
 if (!isset($_SESSION['loggedIn'])) {
     header('Location: login.php');
     exit;
 }
 include('server.php');
-echo $carId;
-$_SESSION['license_plate'] = $carId ; // สมมติว่า $_SESSION['license_plate'] ส่ง 'aaa' เข้ามา
+$_SESSION['license_plate'] = $carId ; 
 
 $license_plate = $_SESSION['license_plate'];
 $query1 = "SELECT * FROM car_info WHERE license_plate = '$license_plate'";

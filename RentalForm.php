@@ -25,7 +25,6 @@ $email = $_SESSION['email'];
 </head>
 
 <body>
-
     <?php include 'navbarclient.php'; ?>
 
     <div class="container-md d-flex justify-content-center" style="height: auto;">
