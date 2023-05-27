@@ -215,7 +215,6 @@
             </form>
             <?php if (!empty($license_plates)) { ?>
                 <div class="carshow">
-                    <hr style="opacity: 0.5; width: 90%; margin: 20px auto 0;">
                     <div class="titlecar" style="margin-bottom: 30px;">My car</div>
                     <div class="listcar">
                         <?php foreach ($license_plates as $index => $license_plate) { ?>
@@ -223,30 +222,45 @@
                                 <div class="imgofcar">
                                     <img src="<?php echo $image_paths[$index]; ?>">
                                 </div>
-                                <div class="infocar">
-                                    <div class="boxinfocar">
-                                        <p>License Plate: <?php echo $license_plate; ?></p>
-                                        <p>Brand: <?php echo $brands[$index]; ?></p>
-                                        <p>Model Name: <?php echo $model_names[$index]; ?></p>
-                                        <p>Year: <?php echo $year_cars[$index]; ?></p>
-                                        <p>Transmission: <?php echo $transmissions[$index]; ?></p>
-                                        <p>Color: <?php echo $colors[$index]; ?></p>
+                                <div class="info_car">
+                                    <div class="car_info">
+                                        <div class="carinfotitle">
+                                            <img src="">
+                                            <h4> Information of car</h4>
+                                        </div>
+                                        <div class="carcontent">
+                                            <div class="boxinfocar">
+                                                <p>License Plate: <?php echo $license_plate; ?></p>
+                                                <p>Brand: <?php echo $brands[$index]; ?></p>
+                                                <p>Model: <?php echo $model_names[$index]; ?></p>
+                                                <p>Year: <?php echo $year_cars[$index]; ?></p>
+                                            </div>
+                                            <div class="boxinfocar">
+                                                <p>Transmission: <?php echo $transmissions[$index]; ?></p>
+                                                <p>Color: <?php echo $colors[$index]; ?></p>
+                                                <p>Seat: <?php echo $seats[$index]; ?></p>
+                                                <p>Price per Day: <?php echo $price_per_days[$index]; ?></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="boxinfocar">
-                                        <p>Seat: <?php echo $seats[$index]; ?></p>
-                                        <p>Price per Day: <?php echo $price_per_days[$index]; ?></p>
-                                        <p>Province: <?php echo $provinces[$index]; ?></p>
-                                        <p>District: <?php echo $districts[$index]; ?></p>
-                                        <p>Zipcode: <?php echo $zipcodes[$index]; ?></p>
+                                    <div class="car_address">
+                                        <div class="carinfotitle">
+                                            <img src="">
+                                            <h4> Address of car</h4>
+                                        </div>
+                                        <div class="boxinfocar">
+                                            <p>Province: <?php echo $provinces[$index]; ?></p>
+                                            <p>District: <?php echo $districts[$index]; ?></p>
+                                            <p>Zipcode: <?php echo $zipcodes[$index]; ?></p>
+                                        </div>
                                     </div>
-                                    
                                 </div>
                             </div>
                         <?php } ?>
                     </div>
                 </div>
             <?php } ?>
-
+            <div class="box" style="height:50px; background-color:#333;"></div>
         </div>
         </div>
         
