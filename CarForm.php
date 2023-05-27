@@ -224,17 +224,22 @@
                                     <img src="<?php echo $image_paths[$index]; ?>">
                                 </div>
                                 <div class="infocar">
-                                    <p>License Plate: <?php echo $license_plate; ?></p>
-                                    <p>Brand: <?php echo $brands[$index]; ?></p>
-                                    <p>Model Name: <?php echo $model_names[$index]; ?></p>
-                                    <p>Year: <?php echo $year_cars[$index]; ?></p>
-                                    <p>Transmission: <?php echo $transmissions[$index]; ?></p>
-                                    <p>Color: <?php echo $colors[$index]; ?></p>
-                                    <p>Seat: <?php echo $seats[$index]; ?></p>
-                                    <p>Price per Day: <?php echo $price_per_days[$index]; ?></p>
-                                    <p>Province: <?php echo $provinces[$index]; ?></p>
-                                    <p>District: <?php echo $districts[$index]; ?></p>
-                                    <p>Zipcode: <?php echo $zipcodes[$index]; ?></p>
+                                    <div class="boxinfocar">
+                                        <p>License Plate: <?php echo $license_plate; ?></p>
+                                        <p>Brand: <?php echo $brands[$index]; ?></p>
+                                        <p>Model Name: <?php echo $model_names[$index]; ?></p>
+                                        <p>Year: <?php echo $year_cars[$index]; ?></p>
+                                        <p>Transmission: <?php echo $transmissions[$index]; ?></p>
+                                        <p>Color: <?php echo $colors[$index]; ?></p>
+                                    </div>
+                                    <div class="boxinfocar">
+                                        <p>Seat: <?php echo $seats[$index]; ?></p>
+                                        <p>Price per Day: <?php echo $price_per_days[$index]; ?></p>
+                                        <p>Province: <?php echo $provinces[$index]; ?></p>
+                                        <p>District: <?php echo $districts[$index]; ?></p>
+                                        <p>Zipcode: <?php echo $zipcodes[$index]; ?></p>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         <?php } ?>

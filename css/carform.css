@@ -210,21 +210,30 @@ input[type=file] {
     box-sizing: border-box;
 }
 
-.boxofcar .imgofcar {
-    max-width: 30%;
+.imgofcar {
+    max-width: 50%;
     text-align: center;
 }
 
-.boxofcar .imgofcar img {
+.imgofcar img {
     max-width: 30%;
     height: auto;
 }
 
-.boxofcar .infocar {
+.infocar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     max-width: 70%;
     margin-top: 10px;
 }
 
-.boxofcar .infocar p {
+.boxinfocar{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.boxinfocar p {
     margin: 5px 0;
 }
