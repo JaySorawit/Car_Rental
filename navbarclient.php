@@ -31,7 +31,7 @@
                 <li> <a href="contact.php"> Contact</a> </li>
                 <li id="menu-signup"> <a href="<?php echo $rentout; ?>"> Rent out</a> </li>
                 <li id="menu-signup"> <a href="profileForm.php"> My Profile</a> </li>
-                <li id="menu-signup"> <a href="#"> My rental car</a> </li>
+                <li id="menu-signup"> <a href="myRentalcar.php"> My rental car</a> </li>
                 <li id="menu-signup"> <a href="logout.php"> Log out</a> </li>
             </ul>
             <div class="nav-right">
@@ -45,7 +45,7 @@
                         <h3><?php echo $fname.' '.$lname; ?><br /></h3>
                         <ul>
                             <li> <img src="img/icon/user-avatar.png" /><a href="profileForm.php">My profile</a> </li>
-                            <li> <img src="img/icon/car.png" /><a href="#">My rental car</a> </li>
+                            <li> <img src="img/icon/car.png" /><a href="myRentalcar.php">My rental car</a> </li>
                             <li> <img src="img/icon/exit.png" width="15px" height="15px" style="margin-left: 3px;"/><a href="Logout.php">Log out</a></li>
                         </ul>
                     </div>
