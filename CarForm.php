@@ -253,6 +253,10 @@
                                             <p>District: <?php echo $districts[$index]; ?></p>
                                             <p>Zipcode: <?php echo $zipcodes[$index]; ?></p>
                                         </div>
+                                        <form action="rentinfo.php" method="post">
+                                            <input type="hidden" name="license_plate" value="<?php echo $license_plate; ?>">
+                                            <input type="submit" class="carsubmit" name="rentinfo" style="margin:0 auto;" value="Delete">
+                                        </form>
                                     </div>
                                 </div>
                             </div>
