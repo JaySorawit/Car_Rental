@@ -2,7 +2,7 @@
 session_start();
 $con = mysqli_connect("localhost", "root", "", "carrental_db");
 if (!$con) {
-    die('Could not connect: ' . mysqli_error());
+    die('Could not connect: ' . mysqli_connect_error());
 }
 
 $email = $_POST['email'];

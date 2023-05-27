@@ -120,14 +120,33 @@ include('server.php');
     var day = date.getDate().toString().padStart(2, '0');
     return year + '-' + month + '-' + day;
 }
-    function search() {
+function search() {
     var startDate = formatDate(document.getElementById('start-date').value);
     var endDate = formatDate(document.getElementById('end-date').value);
     var province = document.getElementById('province_selected').value;
     var district = document.getElementById('district_selected').value;
     var brand = document.getElementById('brand_selected').value;
-    var transmission = document.querySelector('input[name="transmission"]:checked').value;
+    var transmission = document.querySelector('input[name="transmission"]:checked');
 
+    // เพิ่มการตรวจสอบค่าว่างสำหรับ "district" และ "brand"
+    if (district.trim() === '') {
+        district = 'all'; // กำหนดค่าเริ่มต้นเป็น 'all' หรือค่าอื่นที่เหมาะสม
+    }
+    if (brand.trim() === '') {
+        brand = 'all'; // กำหนดค่าเริ่มต้นเป็น 'all' หรือค่าอื่นที่เหมาะสม
+    }
+    if (province.trim() === '') {
+        province = 'all'; // กำหนดค่าเริ่มต้นเป็น 'all' หรือค่าอื่นที่เหมาะสม
+    }
+    
+    // ตรวจสอบการเลือก transmission
+    if (transmission) {
+        transmission = transmission.value;
+    } else {
+        transmission = 'all'; // กำหนดค่าเริ่มต้นเป็น 'all' หากไม่มีการเลือก
+    }
+
+    // รหัสที่มีอยู่ก่อน
     // Perform any necessary validations before redirecting to viewcars.php
     // For example, check if all required fields are filled
 
@@ -136,6 +155,7 @@ include('server.php');
     window.location.href = "viewcars.php" + params;
     console.log(startDate);
 }
+
 
                 $(document).on('click', '#suggestions-list1 li', function () {
                     var selectedOption = $(this).text();

@@ -6,7 +6,7 @@ if (!isset($_SESSION['loggedIn'])) {
     exit;
 }
 include('server.php');
-
+echo $carId;
 $_SESSION['license_plate'] = $carId ; // สมมติว่า $_SESSION['license_plate'] ส่ง 'aaa' เข้ามา
 
 $license_plate = $_SESSION['license_plate'];
