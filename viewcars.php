@@ -498,6 +498,15 @@ if($x!=1){
         background-color: #FFA41B;
     }
 
+    .alert{
+      display: flex;
+      max-width:500px;
+      text-align:center;
+      opacity: 1;
+      border-radius: 20px;
+      margin:0 auto;
+    }
+
     </style>
 </head>
 
@@ -513,9 +522,16 @@ if($x!=1){
     <div class="container-md d-flex justify-content-center" style="height: auto;">
         <div class="row bg-white">
                 <div class="carshow">
-                    <div class="titlecar" style="margin-bottom: 30px;">My car</div>
+                    <div class="titlecar" style="margin-bottom: 30px;">List of car</div>
                     <div class="listcar">
-                    <p style="font-size: 25px; color: white;">X: <?php echo $x; ?></p>
+                    <?php
+                      if ($x == 1) {
+                          $message = '<div class="alert" style=" background-color: white;>
+                                          <p style="font-size: 15px;">Car is not found / You have rented a car on the selected date.<br> (You can rent only 1 car at a time.)</p>
+                                      </div>';
+                          echo $message;
+                      }
+                    ?>
                     <?php if($x!=1){?>
                         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                         <div class="boxofcar">
