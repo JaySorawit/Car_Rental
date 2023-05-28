@@ -23,7 +23,7 @@ body {
 body {
     background-image: url("../img/component/bg2.jpg");
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position: center;
 }
 

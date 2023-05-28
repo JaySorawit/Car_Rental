@@ -45,7 +45,7 @@
         } elseif ($currentDate >= $startDate && $currentDate <= $endDate) {
             return "Currently Renting";
         } else {
-            return "Already Rented";
+            return "There are currently no rentals";
         }
     }
     
@@ -145,7 +145,7 @@
                     } else {
                         ?>
                         <tr>
-                            <td colspan="7">No rental data available.</td>
+                            <td colspan="7">No rental data available / Never been rented before.</td>
                         </tr>
                         <?php
                     }

@@ -3,7 +3,10 @@ session_start();
 $loggedIn = isset($_SESSION['loggedIn']) ? $_SESSION['loggedIn'] : false;
 include('server.php');
 
-$_SESSION['license_plate'] = $_GET['car_id'];
+if (isset($_GET['car_id'])) {
+    $_SESSION['license_plate'] = $_GET['car_id'];
+    $_SESSION['rent_success'] = false;
+}
 
 $license_plate = $_SESSION['license_plate'];
 $query1 = "SELECT * FROM car_info WHERE license_plate = '$license_plate'";

@@ -158,6 +158,7 @@
                                         <p>Province: <?php echo $row['province']; ?></p>
                                         <p>District: <?php echo $row['district']; ?></p><br>
                                         <p>Status: <?php echo getRentalStatus($row['start_date'], $row['end_date']); ?></p>
+                                        <p>Total: <?php echo $formatted_total_cost .' ' . "Baht"?></p>
                                     </div>
                                 </div>
                             </div>

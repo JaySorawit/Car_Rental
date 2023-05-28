@@ -75,6 +75,7 @@ include('server.php');
             </div>
 
             <button class="search-btn" onclick="search()">Find Car</button>
+            
             <script src="js/date.js"></script>
             <script>
                 function fetchSuggestions(keyword, url) {
@@ -155,7 +156,6 @@ function search() {
     window.location.href = "viewcars.php" + params;
     console.log(startDate);
 }
-
 
                 $(document).on('click', '#suggestions-list1 li', function () {
                     var selectedOption = $(this).text();
