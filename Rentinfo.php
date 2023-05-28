@@ -162,6 +162,7 @@
                         }
                     } else {
                         ?>
+                        
                         <tr>
                             <td colspan="7">No rental data available / Never been rented before.</td>
                         </tr>
