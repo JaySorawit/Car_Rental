@@ -438,6 +438,7 @@
     <link rel="stylesheet" href="css/index.css">
     <script src="https://kit.fontawesome.com/b33e8d6cbf.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+    
     <style>
     h2 {
         font-size: 24px;
@@ -462,7 +463,16 @@
         height: auto;
         margin-bottom: 10px;
     }
-
+    body{
+        /* background-image: url('your-image-url.jpg');  */
+        background-size: cover; 
+        background-repeat: no-repeat;
+        background-attachment: fixed; }
+    .car-item img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
     .car-details {
         text-align: center;
     }
