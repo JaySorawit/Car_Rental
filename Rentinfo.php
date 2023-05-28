@@ -40,6 +40,9 @@
 
     function getRentalStatus($startDate, $endDate) {
         $currentDate = date('Y-m-d');
+        if($startDate = 0 && $endDate = 0){
+            return "There are currently no rentals";
+        }
         if ($currentDate < $startDate) {
             return "Soon rental";
         } elseif ($currentDate >= $startDate && $currentDate <= $endDate) {
@@ -123,8 +126,21 @@
                         foreach ($rentals as $index => $rental) {
                             $client_fname = $rental['fname'];
                             $client_lname = $rental['lname'];
-                            $start_date = $rental['start_date'];
-                            $end_date = $rental['end_date'];
+                            if ($rental['start_date'] === NULL && $rental['end_date'] === NULL) {
+                                $start_date = 0;
+                                $end_date = 0;
+                            } else {
+                                $start_date = $rental['start_date'];
+                                $end_date = $rental['end_date'];
+                            }
+                            
+                            if (!isset($start_date)) {
+                                $start_date = 0;
+                            }
+                            
+                            if (!isset($end_date)) {
+                                $end_date = 0;
+                            }
                             $days = floor((strtotime($rental['end_date']) - strtotime($rental['start_date'])) / (60 * 60 * 24));
                             $payment_date = $rental['payment_date'];
                             $price = $car['price_per_day']*$days;
