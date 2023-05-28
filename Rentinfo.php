@@ -117,6 +117,8 @@
                 </thead>
                 <tbody>
                     <?php
+                    $start_date = ""; // Initialize with an empty value
+                    $end_date = ""; // Initialize with an empty value
                     if (!empty($rentals)) {
                         foreach ($rentals as $index => $rental) {
                             $client_fname = $rental['fname'];
