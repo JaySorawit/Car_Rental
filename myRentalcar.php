@@ -28,7 +28,7 @@ mysqli_close($conn);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Rental</title>
+    <title>My Rental car</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -97,7 +97,7 @@ if (!$loggedIn) {
     <div class="container-md d-flex justify-content-center" style="height: auto; ">
         <div class="row bg-white">
             <div class="carshow">
-                <div class="titlecar" style="margin-bottom: 30px;">My car</div>
+                <div class="titlecar" style="margin-bottom: 30px;">My rental car</div>
                 <div class="listcar">
                     <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                         <div class="boxofcar">

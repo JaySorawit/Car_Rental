@@ -302,9 +302,10 @@ while ($car = mysqli_fetch_assoc($result)) {
                                 </div>
                             <?php } ?>
                         </div>
+                    <div class="box" style="height:50px; padding: 50px"></div>
                     </div>
                 <?php } ?>
-                <div class="box" style="height:50px; background-color:#333;"></div>
+                
             </div>
         </div>
     </div>

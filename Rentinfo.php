@@ -181,7 +181,7 @@
 
         <form action="Deletecar.php" class="d-flex justify-content-center" method="post">
             <input type="hidden" name="license_plate"  value="<?php echo $license_plate; ?>">
-            <button class="btn btn-danger m-3"  style="height:40px">Delete</button>
+            <button class="btn btn-danger m-3"  style="height:40px">Delete car</button>
         </form>
     </div>
     </div>
