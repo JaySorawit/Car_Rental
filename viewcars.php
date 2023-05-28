@@ -3,12 +3,31 @@
     $loggedIn = isset($_SESSION['loggedIn']) ? $_SESSION['loggedIn'] : false;
     
     include('server.php');
+    $x=0;
+    $id = $_SESSION['client_id'];
     $startDate = $_GET['start-date'];
     $endDate = $_GET['end-date'];
     $province = $_GET['province'];
     $district = $_GET['district'];
     $brand = $_GET['brand'];
     $transmission = $_GET['transmission'];
+    $query2 = "select * from rent_info where client_id='$id';"; 
+    $conn = mysqli_connect('localhost', 'root', '', 'carrental_db');
+    $result2 = mysqli_query($conn, $query2);
+    while ($row2 = mysqli_fetch_assoc($result2)) {
+
+    if($row2['start_date']<= $startDate &&$row2['end_date']>=$endDate || ($row2['end_date']>=$endDate && $row2['start_date']<=$endDate)||($row2['end_date']>=$startDate && $row2['start_date']<=$startDate)){  
+      $x=1;
+    }
+    
+  
+  } 
+
+    if (!$conn) {
+        die("Error: " . mysqli_connect_error());
+    }
+
+if($x!=1){   
     if ($district == 'all' && $province == 'all' && $brand == 'all' && $transmission == 'all') {
         $query = "SELECT *
         FROM car_info
@@ -406,21 +425,9 @@
             WHERE car_info.license_plate = rent_info.license_plate
           ));
         "; 
-    }
-    
-
-    $conn = mysqli_connect('localhost', 'root', '', 'carrental_db');
-
-
-    if (!$conn) {
-        die("Error: " . mysqli_connect_error());
-    }
-
-
-    $result = mysqli_query($conn, $query);
-
-
+    }$result = mysqli_query($conn, $query);}
     mysqli_close($conn);
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -502,11 +509,14 @@
             include 'navbarclient.php';
         }
     ?>
+    
     <div class="container-md d-flex justify-content-center" style="height: auto;">
         <div class="row bg-white">
                 <div class="carshow">
                     <div class="titlecar" style="margin-bottom: 30px;">My car</div>
                     <div class="listcar">
+                    <p style="font-size: 25px; color: white;">X: <?php echo $x; ?></p>
+                    <?php if($x!=1){?>
                         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                         <div class="boxofcar">
                             <div class="imgofcar">
@@ -521,6 +531,7 @@
                                     <div class="carcontent">
                                         <div class="boxinfocar">
                                             <p>License Plate: <?php echo $row['license_plate']; ?></p>
+                                            
                                             <p>Brand: <?php echo $brand; ?></p>
                                             <p>Model: <?php echo $row['model_id']; ?></p>
                                             <p>Year: <?php echo $row['year_car']; ?></p>
@@ -548,6 +559,7 @@
                                 </div>
                             </div>
                         </div>
+                        <?php } ?>
                         <?php } ?>
                     </div>
                 </div>
