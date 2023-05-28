@@ -23,9 +23,12 @@ body {
 body {
     background-image: url("../img/component/bg4.png");
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position: center;
-    background-attachment: fixed;
+}
+
+.container-md {
+    height: 78vh;
 }
 
 .search-container {
@@ -145,4 +148,46 @@ body {
     border-radius: 5px;
     padding: 5px;
     font-size: 16px;
+}
+
+.br-responsive {
+    display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+    .container-md {
+        height: auto;
+    }
+    .br-responsive {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .sp-responsive {
+        margin-right: 0px !important;
+    }
+    .search-container {
+        padding: 20px;
+    }
+
+    .search-wrapper {
+        width: 100%;
+    }
+
+    .search-btn {
+        width: 100%;
+    }
+
+    .date-info {
+        margin: 0 auto;
+    }
+
+    .date-res {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 10px;
+    }
+
+    .date-info-res {
+        margin-bottom: 10px;
+    }
 }

@@ -1,9 +1,8 @@
 <?php
 session_start();
-$con=mysqli_connect("localhost","root","","CarRental_DB");
-// Check connection
-if (mysqli_connect_errno()) {
-echo "Failed to connect to MySQL: " . mysqli_connect_error();
+include('../server.php');
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 'admin') {
+    header("Location: ../index.php");
 }
 
 $sql = "SELECT * FROM client";
@@ -48,10 +47,10 @@ $result = mysqli_query($con, $sql);
 
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="dist/img/adminohm.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <span class="d-block text-white">Admin OHM</span>
+                        <span class="d-block text-white">Admin</span>
                     </div>
                 </div>
 
@@ -161,10 +160,124 @@ $result = mysqli_query($con, $sql);
                     <div class="mb-2">
                         <div>
                             <h3 class="ml-2 mb-3">Client Table</h3>
+                            <button type="button" class="btn btn-secondary ml-2 mb-2" style="height: 40px; width: 80px"
+                                data-toggle="modal" data-target="#myModal">
+                                Add
+                            </button>
+
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">New Client</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="controller/addClient.php" method="POST">
+                                                <div class="form-group">
+                                                    <label for="email">Email:</label>
+                                                    <input type="text" class="form-control" name="email" maxlength="30"
+                                                        required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="password">Password:</label>
+                                                    <input type="text" class="form-control" name="password"
+                                                        maxlength="20" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="firstname">First Name:</label>
+                                                    <input type="text" class="form-control" name="firstname"
+                                                        maxlength="30" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="lastname">Last Name:</label>
+                                                    <input type="text" class="form-control" name="lastname"
+                                                        maxlength="30" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="phone">Phone Number:</label>
+                                                    <input type="text" class="form-control" name="phone" maxlength="10"
+                                                        required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="mr-2">Gender: &nbsp;</label>
+                                                    <input type="radio" name="gender" value="male" required> Male
+                                                    <span class="mr-3"></span>
+                                                    <input type="radio" name="gender" value="female"> Female
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="mr-1" for="day">Day:</label>
+                                                    <select class="mr-3" id="day" name="day">
+                                                        <?php
+                                                        for ($i = 1; $i <= 31; $i++) {
+                                                            echo "<option value='$i'>$i</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+
+                                                    <label class="mr-1" for="month">Month:</label>
+                                                    <select class="mr-3" id="month" name="month">
+                                                        <?php
+                                                        $months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+                                                        foreach ($months as $month) {
+                                                            echo "<option value='$month'>$month</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+
+                                                    <label for="year">Year:</label>
+                                                    <select id="year" name="year">
+                                                        <?php
+                                                        $current_year = date("Y");
+                                                        for ($i = $current_year; $i >= $current_year - 100; $i--) {
+                                                            echo "<option value='$i'>$i</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="mr-2" style="width: 120px;">Interested Car:
+                                                        &nbsp;</label>
+                                                    <input type="checkbox" name="interestedcar[Sedan]" value="Sedan">
+                                                    Sedan
+                                                    <span class="mr-2"></span>
+                                                    <input type="checkbox" name="interestedcar[Van]" value="Van"> Van
+                                                    <span class="mr-2"></span>
+                                                    <input type="checkbox" name="interestedcar[PPV]" value="PPV"> PPV
+                                                    <span class="mr-2"></span>
+                                                    <input type="checkbox" name="interestedcar[SUV]" value="SUV"> SUV
+                                                    <span class="mr-2"></span>
+                                                    <input type="checkbox" name="interestedcar[Pickup]" value="Pickup">
+                                                    Pickup
+                                                    <span class="mr-2"></span>
+                                                    <input type="checkbox" name="interestedcar[MPV]" value="MPV"> MPV
+                                                    <span class="mr-2"></span>
+                                                    <input type="checkbox" name="interestedcar[Hatchback]"
+                                                        value="Hatchback"> Hatchback
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-secondary" name="upload"
+                                                        style="height:40px">Add</button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal"
+                                                style="height:40px">Close</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
                             <div class="table-responsive-md">
                                 <table class="table table-striped table-bordered">
                                     <thead class="">
                                         <tr>
+                                            <th class="text-center" colspan="2">Action</th>
                                             <th>Client ID</th>
                                             <th>Driving License Number</th>
                                             <th>First Name</th>
@@ -180,21 +293,52 @@ $result = mysqli_query($con, $sql);
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php while($row = mysqli_fetch_assoc($result)) { ?>
-                                        <tr>
-                                            <td><?php echo $row['client_id']; ?></td>
-                                            <td><?php echo $row['driving_license_no']; ?></td>
-                                            <td><?php echo $row['fname']; ?></td>
-                                            <td><?php echo $row['lname']; ?></td>
-                                            <td><?php echo $row['dateofbirth']; ?></td>
-                                            <td><?php echo $row['gender']; ?></td>
-                                            <td><?php echo $row['email']; ?></td>
-                                            <td><?php echo $row['password']; ?></td>
-                                            <td><?php echo $row['tel_no']; ?></td>
-                                            <td><?php echo $row['lessor_state']; ?></td>
-                                            <td><?php echo $row['banking_account']; ?></td>
-                                            <td><?php echo $row['bank_name']; ?></td>
-                                        </tr>
+                                        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                                            <tr>
+                                                <td><button class="btn btn-primary" style="height:40px"
+                                                        onclick="clientEditForm('<?= $row['client_id'] ?>')">Edit</button>
+                                                </td>
+                                                <td><button class="btn btn-danger" style="height:40px"
+                                                        onclick="clientDelete('<?= $row['client_id'] ?>')">Delete</button>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $row['client_id']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['driving_license_no']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['fname']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['lname']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['dateofbirth']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['gender']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['email']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['password']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['tel_no']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['lessor_state']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['banking_account']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['bank_name']; ?>
+                                                </td>
+                                            </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -206,12 +350,30 @@ $result = mysqli_query($con, $sql);
             </div>
         </div>
 
+        <?php if (isset($_SESSION['error'])) { ?>
+            <div>
+                <?php
+                echo $_SESSION['error'];
+                unset($_SESSION['error']);
+                ?>
+            </div>
+        <?php } ?>
+        <?php if (isset($_SESSION['success'])) { ?>
+            <div>
+                <?php
+                echo $_SESSION['success'];
+                unset($_SESSION['success']);
+                ?>
+            </div>
+        <?php } ?>
+
         <!-- jQuery -->
         <script src="plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
         <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
+        <script src="dist/js/admincontroll.js"></script>
 </body>
 
 </html>

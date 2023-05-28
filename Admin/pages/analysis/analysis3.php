@@ -1,9 +1,8 @@
 <?php
 session_start();
-$con = mysqli_connect("localhost", "root", "", "CarRental_DB");
-// Check connection
-if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+include('../../../server.php');
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 'admin') {
+    header("Location: ../../../index.php");
 }
 
 $sql = "SELECT CASE 
@@ -64,10 +63,10 @@ $result = mysqli_query($con, $sql);
 
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../../dist/img/adminohm.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="../../dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <span class="d-block text-white">Admin OHM</span>
+                        <span class="d-block text-white">Admin</span>
                     </div>
                 </div>
 

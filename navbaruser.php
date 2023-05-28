@@ -12,7 +12,7 @@
     <nav width="100%" height= "50px" style=" background-color: black;">
         <div class="navbar">
             <div class="nav-logo">
-                <a href="index.php"> Car Rental</a> 
+                <a class="brand-logo-crop" href="index.php"><img height="35px" src="img/component/brand-logo.png" alt="" class="brand-logo"></a> 
             </div>
             <ul class="nav-menu" id="myMenu" >
                 <li> <a href="index.php"> Home</a> </li>

@@ -55,7 +55,7 @@
 </head>
 
 <body>
-    <div class="container-md">
+    <div class="container-md" style="height: 100%; background-color:white;">
         <div class="profile-container">
             <div class="titleProfile">
                 <h1>Profile</h1>
@@ -277,6 +277,7 @@
                     <input id="myPass" type="submit" class="profile-submit" value="Submit">
                 </div>
             </form>
+            <hr style="opacity: 0.5;width: 90%;margin: 20px auto;">
         </div>
     </div>
     <footer>

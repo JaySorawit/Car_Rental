@@ -1,9 +1,8 @@
 <?php
 session_start();
-$con = mysqli_connect("localhost", "root", "", "CarRental_DB");
-// Check connection
-if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+include('../../../server.php');
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 'admin') {
+    header("Location: ../../../index.php");
 }
 
 $sql = "SELECT * FROM address";
@@ -48,15 +47,16 @@ $result = mysqli_query($con, $sql);
 
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../../dist/img/adminohm.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="../../dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <span class="d-block text-white">Admin OHM</span>
+                        <span class="d-block text-white">Admin</span>
                     </div>
                 </div>
 
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <li class="nav-item menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -160,22 +160,82 @@ $result = mysqli_query($con, $sql);
                     <div class="mb-2">
                         <div>
                             <h3 class="ml-2 mb-3">Address Table</h3>
+                            <button type="button" class="btn btn-secondary ml-2 mb-2" style="height: 40px; width: 80px"
+                                data-toggle="modal" data-target="#myModal">
+                                Add
+                            </button>
+
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">New Address</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="../../controller/addAddress.php" method="POST">
+                                                <div class="form-group">
+                                                    <label for="Zipcode">Zipcode:</label>
+                                                    <input type="text" class="form-control" name="zipcode" maxlength="5"
+                                                        required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="District">District:</label>
+                                                    <input type="text" class="form-control" name="district"
+                                                        maxlength="50" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Province">Province:</label>
+                                                    <input type="text" class="form-control" name="province"
+                                                        maxlength="50" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-secondary" name="upload"
+                                                        style="height:40px">Add</button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal"
+                                                style="height:40px">Close</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                             <div class="table-responsive-md">
                                 <table class="table table-striped table-bordered">
                                     <thead class="">
                                         <tr>
+                                            <th class="text-center" colspan="2">Action</th>
                                             <th>Zipcode</th>
                                             <th>District</th>
                                             <th>Province</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php while($row = mysqli_fetch_assoc($result)) { ?>
-                                        <tr>
-                                            <td><?php echo $row['zipcode']; ?></td>
-                                            <td><?php echo $row['district']; ?></td>
-                                            <td><?php echo $row['province']; ?></td>
-                                        </tr>
+                                        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                                            <tr>
+                                                <td><button class="btn btn-primary"
+                                                        style="height:40px; margin-left: 30%;"
+                                                        onclick="addressEditForm('<?= $row['zipcode'] ?>', '<?= $row['district'] ?>')">Edit</button>
+                                                </td>
+                                                <td><button class="btn btn-danger" style="height:40px; margin-left: 30%;"
+                                                        onclick="addressDelete('<?= $row['zipcode'] ?>', '<?= $row['district'] ?>')">Delete</button>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['zipcode']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['district']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['province']; ?>
+                                                </td>
+                                            </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -187,12 +247,30 @@ $result = mysqli_query($con, $sql);
             </div>
         </div>
 
+        <?php if (isset($_SESSION['error'])) { ?>
+            <div>
+                <?php
+                echo $_SESSION['error'];
+                unset($_SESSION['error']);
+                ?>
+            </div>
+        <?php } ?>
+        <?php if (isset($_SESSION['success'])) { ?>
+            <div>
+                <?php
+                echo $_SESSION['success'];
+                unset($_SESSION['success']);
+                ?>
+            </div>
+        <?php } ?>
+
         <!-- jQuery -->
         <script src="../../plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
         <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="../../dist/js/adminlte.min.js"></script>
+        <script src="../../dist/js/admincontroll.js"></script>
 </body>
 
 </html>
