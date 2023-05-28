@@ -1,24 +1,20 @@
 <?php
 session_start();
-if (!isset($_SESSION['loggedIn'])) {
-    header('Location: login.php');
-    exit;
-}
 include('server.php');
 
 $email = $_SESSION['email'];
 $license_plate = $_SESSION['license_plate'];
-$start_date_str = $_POST['start-date'];
-$time_str = $_POST['time-picker1'];
-$datetime_str = $start_date_str . ' ' . $time_str;
-$start_datetime = date('Y-m-d H:i:s', strtotime($datetime_str));
-$end_date_str = $_POST['end-date'];
-$time_str = $_POST['time-picker2'];
-$datetime_str = $end_date_str . ' ' . $time_str;
-$end_datetime = date('Y-m-d H:i:s', strtotime($datetime_str));
 
+$date_range = $_POST['date-picker'];
+$time_picker = $_POST['time-picker1'];
+$dates = explode(' to ', $date_range);
+$start_date = date('Y-m-d', strtotime($dates[0]));
+$end_date = date('Y-m-d', strtotime($dates[1]));
+$start_datetime = $start_date . ' ' . $time_picker;
+$end_datetime = $end_date . ' ' . $time_picker;
 $have_license = $_SESSION['have_license'];
 $have_card = $_SESSION['have_card'];
+$target = '1970-01-01 ' . $time_picker;
 
 if ($_POST['card-select'] == 'new_card') {
     $driving_license_no = $_POST['driving_license_no2'];
@@ -46,8 +42,13 @@ if ($_POST['card-select'] == 'new_card') {
     $cvv = $_POST['cvv'];
 }
 
-
-if (empty($driving_license_no)) {
+if ($start_datetime === $target) {
+    $_SESSION['error'] = 'Please select pick-up date.';
+    header("location: RentalForm.php");
+} else if ($end_datetime === $target) {
+    $_SESSION['error'] = 'Please select drop-off date.';
+    header("location: RentalForm.php");
+} else if (empty($driving_license_no)) {
     $_SESSION['error'] = 'Please enter a driver license.';
     header("location: RentalForm.php");
 } else if (empty($card_number)) {
@@ -103,8 +104,8 @@ if (empty($driving_license_no)) {
                     VALUES ('$client_id', '$license_plate', '$start_datetime', '$end_datetime', '$card_number')";
             mysqli_query($con, $sql);
 
-            $_SESSION['success'] = "You have Successfully Subscribed! <a href='LoginForm.php' class='alert-link'>Click Here!</a> to Login";
-            header("location: index.php");
+            $_SESSION['rent_success'] = true;
+            header("location: RentalForm.php");
         } else {
             $_SESSION['error'] = "Something went wrong";
             header("location: RentalForm.php");

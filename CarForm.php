@@ -70,7 +70,7 @@ while ($car = mysqli_fetch_assoc($result)) {
             <div class="row bg-white">
                 <div class="titlecar"> CAR FORM </div>
                 <hr style="opacity: 0.5;width: 90%;margin: 20px auto;">
-                <div class="alertbox" style="width:50%;">
+                <div class="alertbox" style="width:50%; margin:0 auto;">
                     <?php if (isset($_SESSION['error'])) { ?>
                         <div class="regis-error alert alert-danger mt-1" role="alert">
                             <?php
@@ -98,7 +98,6 @@ while ($car = mysqli_fetch_assoc($result)) {
                         </div>
                     <?php } ?>
                 </div>
-
                 <form action="Car.php" method="post" enctype="multipart/form-data" id="Car-Form"
                     onsubmit="return validateForm()">
                     <div class="carinsert">

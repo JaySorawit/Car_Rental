@@ -45,17 +45,17 @@
     <?php include "navbarclient.php"; ?>
     <title>My Profile</title>
     <style>
-    body {
-        background-image: url("./img/component/bg2.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
+        body {
+            background-color: #fff;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container-md" style="height: 100%; background-color:white;">
+    <div class="container-md">
         <div class="profile-container">
             <div class="titleProfile">
                 <h1>Profile</h1>
@@ -277,7 +277,6 @@
                     <input id="myPass" type="submit" class="profile-submit" value="Submit">
                 </div>
             </form>
-            <hr style="opacity: 0.5;width: 90%;margin: 20px auto;">
         </div>
     </div>
     <footer>

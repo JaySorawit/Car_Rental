@@ -37,6 +37,18 @@
 
     $money = 0;
     $count = 0;
+
+    function getRentalStatus($startDate, $endDate) {
+        $currentDate = date('Y-m-d');
+        if ($currentDate < $startDate) {
+            return "Soon rental";
+        } elseif ($currentDate >= $startDate && $currentDate <= $endDate) {
+            return "Currently Renting";
+        } else {
+            return "Already Rented";
+        }
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -146,6 +158,7 @@
             <h2>Rental information</h2>
             <p>The total number that this car has been rented: <?php echo $count;?> </p>
             <p>The total of income from renting out this car: <?php echo $money . ' ' . "Baht";?> </p>
+            <p>Status rental of this car: <?php echo getRentalStatus($start_date, $end_date); ?></p>
         </div>
 
         <form action="Deletecar.php" class="d-flex justify-content-center" method="post">

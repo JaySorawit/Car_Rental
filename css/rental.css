@@ -74,10 +74,14 @@ body {
 
 .pickdrop-info {
     margin-top: 95px;
+}
+
+.pickdrop-info2 {
     padding: 20px 20px 7px 20px;
 }
 
 .date-info {
+    width: 214px;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
     border-radius: 5px;
@@ -86,7 +90,8 @@ body {
 }
 
 .time-info {
-    padding: 7px;
+    width: 214px;
+    padding: 5px;
 }
 
 
@@ -138,35 +143,9 @@ select {
 .fa-credit-card,
 .fa-cc-visa,
 .fa-calendar-xmark,
-.fa-key {
+.fa-key,
+.fa-clock {
     color: #fe6722;
-}
-
-#popup-container {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
-    overflow-y: scroll;
-}
-
-#popup {
-    background-color: white;
-    width: 50%;
-    max-width: 720px;
-    padding: 25px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#close-popup {
-    margin-top: 20px;
 }
 
 .input-license {
@@ -182,6 +161,42 @@ select {
     outline: none;
 }
 
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.popup-content {
+    background-color: #fff;
+    width: 540px;
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close-btn {
+    margin-top: 10px;
+    background-color: #fe6722;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.close-btn:hover {
+    background-color: #e04a05;
+}
+
+
 footer {
     background-color: black;
     color: white;
@@ -193,6 +208,7 @@ footer {
         background-size: auto;
         background-repeat: no-repeat;
     }
+
     .row {
         width: 360px;
         display: flex;
@@ -226,8 +242,12 @@ footer {
         position: relative;
         padding: 20px;
         top: -80px;
-        
+
         padding: 0px;
         margin-bottom: 2rem;
     }
+    .popup-content {
+        width: 90%;
+        max-width: 350px;
+      }
 }
