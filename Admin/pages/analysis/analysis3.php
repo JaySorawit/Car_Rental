@@ -36,6 +36,26 @@ $result = mysqli_query($con, $sql);
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <link rel="stylesheet" href="../../../css/admin.css">
     <script src="https://kit.fontawesome.com/b33e8d6cbf.js" crossorigin="anonymous"></script>
+    <style>
+        .chartbox {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+        }
+
+        #bar-chart, #Revenue-chart {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -176,6 +196,14 @@ $result = mysqli_query($con, $sql);
                     <div class="mb-2">
                         <div>
                             <h3 class="ml-2 mb-3">Income and total leasing from each age group</h3>
+                            <div class="chartbox">
+                                <div class="chart-container">
+                                    <canvas id="bar-chart"></canvas>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="Revenue-chart"></canvas>
+                                </div>
+                            </div>
                             <div class="table-responsive-md">
                                 <table class="table table-striped table-bordered">
                                     <thead class="">
@@ -215,6 +243,128 @@ $result = mysqli_query($con, $sql);
         <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="../../dist/js/adminlte.min.js"></script>
+        
+        <!-- Graph plot -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
+        <script>
+            var ageRanges = ['18-23', '24-29', '30-35', '36-41', '42-47', '48-53', '54-59', '60+'];
+
+            var tableData = [];
+            var tableRows = document.querySelectorAll("table tbody tr");
+            tableRows.forEach(function (row) {
+                var ageGroup = row.cells[0].textContent.trim();
+                var leases = parseInt(row.cells[1].textContent);
+                var revenue = parseFloat(row.cells[2].textContent);
+                tableData.push({ ageGroup: ageGroup, leases: leases, revenue: revenue });
+            });
+
+            var leaseCounts = {};
+            ageRanges.forEach(function (range) {
+                leaseCounts[range] = 0;
+            });
+
+            tableData.forEach(function (data) {
+                var ageGroup = data.ageGroup;
+                var leases = data.leases;
+
+                var mappedRange = ageRanges.find(function (range) {
+                    return range === ageGroup;
+                });
+
+                if (mappedRange) {
+                    leaseCounts[mappedRange] += leases;
+                }
+            });
+
+            var ageRangeLabels = ageRanges;
+            var leaseCountsData = ageRangeLabels.map(function (range) {
+                return leaseCounts[range];
+            });
+
+            new Chart(document.getElementById("bar-chart"), {
+                type: "bar",
+                data: {
+                    labels: ageRangeLabels,
+                    datasets: [
+                        {
+                            label: "Number of Leases",
+                            data: leaseCountsData,
+                            backgroundColor: "rgba(75, 192, 192, 0.6)",
+                            borderColor: "rgba(75, 192, 192, 1)",
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            precision: 0
+                        }
+                    }
+                }
+            });
+
+            var tableData = [];
+            var tableRows = document.querySelectorAll("table tbody tr");
+            tableRows.forEach(function (row) {
+                var ageGroup = row.cells[0].textContent.trim();
+                var leases = parseInt(row.cells[1].textContent);
+                var revenue = parseFloat(row.cells[2].textContent);
+                tableData.push({ ageGroup: ageGroup, leases: leases, revenue: revenue });
+            });
+
+            var revenueByAgeRange = {};
+            ageRanges.forEach(function (range) {
+                revenueByAgeRange[range] = 0;
+            });
+
+            tableData.forEach(function (data) {
+                var ageGroup = data.ageGroup;
+                var revenue = data.revenue;
+
+                var mappedRange = ageRanges.find(function (range) {
+                    return range === ageGroup;
+                });
+
+                if (mappedRange) {
+                    revenueByAgeRange[mappedRange] += revenue;
+                }
+            });
+
+            var ageRangeLabels = ageRanges;
+            var revenueData = ageRangeLabels.map(function (range) {
+                return revenueByAgeRange[range];
+            });
+
+            new Chart(document.getElementById("Revenue-chart"), {
+                type: "bar",
+                data: {
+                    labels: ageRangeLabels,
+                    datasets: [
+                        {
+                            label: "Revenue Generated from Leasing",
+                            data: revenueData,
+                            backgroundColor: "rgba(255, 99, 132, 0.6)",
+                            borderColor: "rgba(255, 99, 132, 1)",
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+        </script>
 </body>
 
 </html>

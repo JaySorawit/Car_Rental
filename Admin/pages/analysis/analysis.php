@@ -26,6 +26,26 @@ $result = mysqli_query($con, $sql);
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <link rel="stylesheet" href="../../../css/admin.css">
     <script src="https://kit.fontawesome.com/b33e8d6cbf.js" crossorigin="anonymous"></script>
+    <style>
+        .chartbox {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+        }
+
+        #bar-chart, #Revenue-chart {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -166,6 +186,14 @@ $result = mysqli_query($con, $sql);
                     <div class="mb-2">
                         <div>
                             <h3 class="ml-2 mb-3">Top rented car brands</h3>
+                            <div class="chartbox">
+                                <div class="chart-container">
+                                    <canvas id="bar-chart"></canvas>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="Revenue-chart"></canvas>
+                                </div>
+                            </div>
                             <div class="table-responsive-md">
                                 <table class="table table-striped table-bordered">
                                     <thead class="">
@@ -205,6 +233,140 @@ $result = mysqli_query($con, $sql);
         <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="../../dist/js/adminlte.min.js"></script>
+        
+        <!-- Graph plot -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
+        <script>
+            var tableData = [];
+            var tableRows = document.querySelectorAll("table tbody tr");
+            tableRows.forEach(function (row) {
+                var brand = row.cells[0].textContent.trim();
+                var leases = parseInt(row.cells[1].textContent);
+                var revenue = parseFloat(row.cells[2].textContent);
+                tableData.push({ brand: brand, leases: leases, revenue: revenue });
+            });
+
+            tableData.sort(function (a, b) {
+                return b.leases - a.leases;
+            });
+
+            if (tableData.length > 10) {
+                var otherLeases = 0;
+                var otherRevenue = 0;
+
+                for (var i = 10; i < tableData.length; i++) {
+                    otherLeases += tableData[i].leases;
+                    otherRevenue += tableData[i].revenue;
+                }
+
+                tableData = tableData.slice(0, 10);
+
+                tableData.push({
+                    brand: "Other",
+                    leases: otherLeases,
+                    revenue: otherRevenue
+                });
+            }
+
+            var brands = tableData.map(function (data) {
+                return data.brand;
+            });
+            var leaseCounts = tableData.map(function (data) {
+                return data.leases;
+            });
+
+            new Chart(document.getElementById("bar-chart"), {
+                type: "bar",
+                data: {
+                    labels: brands,
+                    datasets: [
+                        {
+                            label: "Number of Leases",
+                            data: leaseCounts,
+                            backgroundColor: "rgba(54, 162, 235, 0.6)",
+                            borderColor: "rgba(54, 162, 235, 1)",
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            precision: 0
+                        }
+                    }
+                }
+            });
+
+            // Get the data from the table (revenue)
+            var tableData = [];
+            var tableRows = document.querySelectorAll("table tbody tr");
+            tableRows.forEach(function (row) {
+                var brand = row.cells[0].textContent.trim();
+                var leases = parseInt(row.cells[1].textContent);
+                var revenue = parseFloat(row.cells[2].textContent);
+                tableData.push({ brand: brand, leases: leases, revenue: revenue });
+            });
+
+            tableData.sort(function (a, b) {
+                return b.revenue - a.revenue;
+            });
+
+            if (tableData.length > 10) {
+                var otherLeases = 0;
+                var otherRevenue = 0;
+
+                for (var i = 10; i < tableData.length; i++) {
+                    otherLeases += tableData[i].leases;
+                    otherRevenue += tableData[i].revenue;
+                }
+
+                tableData = tableData.slice(0, 10); 
+
+                tableData.push({
+                    brand: "Other",
+                    leases: otherLeases,
+                    revenue: otherRevenue
+                });
+            }
+
+            var brands = tableData.map(function (data) {
+                return data.brand;
+            });
+            var revenues = tableData.map(function (data) {
+                return data.revenue;
+            });
+
+            new Chart(document.getElementById("Revenue-chart"), {
+                type: "bar",
+                data: {
+                    labels: brands,
+                    datasets: [
+                        {
+                            label: "Revenue Generated from Leasing",
+                            data: revenues,
+                            backgroundColor: "rgba(75, 192, 192, 0.6)",
+                            borderColor: "rgba(75, 192, 192, 1)",
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            precision: 0
+                        }
+                    }
+                }
+            });
+
+        </script>
 </body>
 
 </html>

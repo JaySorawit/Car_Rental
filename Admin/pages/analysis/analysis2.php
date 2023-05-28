@@ -25,6 +25,19 @@ $result = mysqli_query($con, $sql);
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <link rel="stylesheet" href="../../../css/admin.css">
     <script src="https://kit.fontawesome.com/b33e8d6cbf.js" crossorigin="anonymous"></script>
+    <style>
+        .chart-container {
+            position: relative;
+            height: 400px;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        #bar-chart{
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -165,6 +178,10 @@ $result = mysqli_query($con, $sql);
                     <div class="mb-2">
                         <div>
                             <h3 class="ml-2 mb-3">Most car rental locations</h3>
+                            <div class="chart-container">
+                                <canvas id="bar-chart"></canvas>
+                            </div>
+
                             <div class="table-responsive-md">
                                 <table class="table table-striped table-bordered">
                                     <thead class="">
@@ -204,6 +221,73 @@ $result = mysqli_query($con, $sql);
         <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="../../dist/js/adminlte.min.js"></script>
+
+        <!-- Graph plot -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
+        <script>
+            var tableData = [];
+            var tableRows = document.querySelectorAll("table tbody tr");
+            tableRows.forEach(function (row) {
+                var province = row.cells[0].textContent.trim();
+                var district = row.cells[1].textContent.trim();
+                var rentals = parseInt(row.cells[2].textContent);
+                tableData.push({ province: province, district: district, rentals: rentals });
+            });
+
+            tableData.sort(function (a, b) {
+                return b.rentals - a.rentals;
+            });
+
+            if (tableData.length > 10) {
+                var otherRentals = 0;
+
+                for (var i = 10; i < tableData.length; i++) {
+                    otherRentals += tableData[i].rentals;
+                }
+
+                tableData = tableData.slice(0, 10);
+
+                tableData.push({
+                    province: "Other",
+                    district: "",
+                    rentals: otherRentals
+                });
+            }
+
+            var provinces = tableData.map(function (data) {
+                return data.province + ' - ' + data.district;
+            });
+            var rentalCounts = tableData.map(function (data) {
+                return data.rentals;
+            });
+
+            new Chart(document.getElementById("bar-chart"), {
+                type: "bar",
+                data: {
+                    labels: provinces,
+                    datasets: [
+                        {
+                            label: "Total Number of Rentals",
+                            data: rentalCounts,
+                            backgroundColor: "rgba(255, 99, 132, 0.6)",
+                            borderColor: "rgba(255, 99, 132, 1)", 
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            precision: 0
+                        }
+                    }
+                }
+            });
+
+        </script>
 </body>
 
 </html>
