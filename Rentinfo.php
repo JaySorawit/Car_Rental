@@ -40,7 +40,7 @@
 
     function getRentalStatus($startDate, $endDate) {
         $currentDate = date('Y-m-d');
-        if($startDate = 0 && $endDate = 0){
+        if ($startDate == '0000-00-00' && $endDate == '0000-00-00') {
             return "There are currently no rentals";
         }
         if ($currentDate < $startDate) {

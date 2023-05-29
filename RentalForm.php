@@ -49,7 +49,7 @@ $end_dates_json = json_encode($end_dates);
         <div class="row bg-white">
 
             <div class="rental-left col-7">
-                <div class="ps-2 mb-2"><a href="#" class="back-btn"><i
+                <div class="ps-2 mb-2"><a href="index.php" class="back-btn"><i
                             class="fa-solid fa-angle-left"></i>&nbsp;&nbsp;Back</a></div>
                 <div class="rent-form mb-5 ps-2 border-bottom">
                     <h2 class="title text-uppercase">Rental Form</h2>
@@ -133,8 +133,9 @@ $end_dates_json = json_encode($end_dates);
                                 <div class="d-flex justify-content-between align-items-center mb-2">
                                     <label for="start-date"><i class="fa-regular fa-calendar me-2"></i>Date
                                         range</label>
-                                    <input id="date-picker" name="date-picker" class="date-info" type="date-local"
-                                        placeholder="Pick-up to drop-off">
+                                    <input id="" name="date-picker" class="date-info" type="text"
+                                        placeholder="Pick-up to drop-off" value="<?php echo $_SESSION['start-date'] .' to ' .$_SESSION['end-date']; ?>"
+                                        readonly>
                                 </div>
 
                                 <div class="d-flex justify-content-between align-items-center mb-2">
@@ -164,7 +165,7 @@ $end_dates_json = json_encode($end_dates);
                                 $result = mysqli_query($con, $query);
                                 $row = mysqli_fetch_assoc($result);
                                 if ($row['driving_license_no'] == null) {
-                                    echo '<input style="width: 210px;" class="input-license" type="text" name="driving_license_no">';
+                                    echo '<input style="width: 210px;" class="input-license" type="text" name="driving_license_no" maxlength="10">';
                                     $_SESSION['have_license'] = 0;
                                 } else {
                                     echo '<input style="width: 210px;" class="input-license input-license-already" type="text" name="driving_license_no2" value="' . $row['driving_license_no'] . '" readonly>';

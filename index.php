@@ -31,12 +31,16 @@ include('server.php');
     <div class="container-md d-flex justify-content-center align-items-center mt-3 text-white" style="height: 78vh;">
         <main class="search-container">
             <div class="mb-1">
-                <label for="start-date"><i class="fa-regular fa-calendar me-2"></i>Start Date &nbsp; </label>
-                <input type="text" id="start-date" name="start-date" class="date-info">
-                <span class="me-4"></span>
-                <label for="end-date"><i class="fa-regular fa-calendar me-2"></i>End Date &nbsp; </label>
-                <input type="text" id="end-date" name="end-date" class="date-info">
+                <div class="date-res">
+                    <label for="start-date"><i class="fa-regular fa-calendar me-2"></i>Start Date &nbsp; </label>
+                    <input type="text" id="start-date" name="start-date" class="date-info date-info-res">
+                    <span class="me-4 sp-responsive"></span>
+                    <br class="br-responsive">
+                    <label for="end-date"><i class="fa-regular fa-calendar me-2"></i>End Date &nbsp; </label>
+                    <input type="text" id="end-date" name="end-date" class="date-info">
+                </div>
             </div>
+
 
             <br>
             <center class="mb-2">Province</center>
@@ -45,7 +49,7 @@ include('server.php');
                 <input type="text" id="province_selected" class="form-control"
                     onkeyup="fetchSuggestions(this.value,'fetch_suggestions_province.php')" style="border: 1px solid #ccc;
     background: #f9f9f9;">
-                <ul id="suggestions-list1" class ="text-black"></ul>
+                <ul id="suggestions-list1" class="text-black"></ul>
             </div>
 
             <br>
@@ -53,9 +57,10 @@ include('server.php');
 
             <div class="search-wrapper">
                 <input type="text" id="district_selected" class="form-control"
-                    onkeyup="fetchSuggestions_district(this.value, 'fetch_suggestions_district.php', $('#province_selected').val())" style="border: 1px solid #ccc;
+                    onkeyup="fetchSuggestions_district(this.value, 'fetch_suggestions_district.php', $('#province_selected').val())"
+                    style="border: 1px solid #ccc;
     background: #f9f9f9;">
-                <ul id="suggestions-list2" class ="text-black"></ul>
+                <ul id="suggestions-list2" class="text-black"></ul>
             </div>
 
             <br>
@@ -65,17 +70,17 @@ include('server.php');
                 <input type="text" id="brand_selected" class="form-control"
                     onkeyup="fetchSuggestions(this.value,'fetch_suggestions_brand.php')" style="border: 1px solid #ccc;
     background: #f9f9f9;">
-                <ul id="suggestions-list3" class ="text-black"></ul>
+                <ul id="suggestions-list3" class="text-black"></ul>
             </div>
 
             <div class="transmission-wrapper d-flex justify-content-center mb-4">
-                    <input class="me-1" type="radio" name="transmission" value="auto"> Automatic
-                    <span class="me-3"></span>
-                    <input class="me-1" type="radio" name="transmission" value="manual"> Manual Transmission
+                <input class="me-1" type="radio" name="transmission" value="auto"> Automatic
+                <span class="me-3"></span>
+                <input class="me-1" type="radio" name="transmission" value="manual"> Manual Transmission
             </div>
 
             <button class="search-btn" onclick="search()">Find Car</button>
-            
+
             <script src="js/date.js"></script>
             <script>
                 function fetchSuggestions(keyword, url) {
@@ -114,48 +119,48 @@ include('server.php');
                         }
                     });
                 }
-    function formatDate(dateString) {
-    var date = new Date(dateString);
-    var year = date.getFullYear();
-    var month = (date.getMonth() + 1).toString().padStart(2, '0');
-    var day = date.getDate().toString().padStart(2, '0');
-    return year + '-' + month + '-' + day;
-}
-function search() {
-    var startDate = formatDate(document.getElementById('start-date').value);
-    var endDate = formatDate(document.getElementById('end-date').value);
-    var province = document.getElementById('province_selected').value;
-    var district = document.getElementById('district_selected').value;
-    var brand = document.getElementById('brand_selected').value;
-    var transmission = document.querySelector('input[name="transmission"]:checked');
+                function formatDate(dateString) {
+                    var date = new Date(dateString);
+                    var year = date.getFullYear();
+                    var month = (date.getMonth() + 1).toString().padStart(2, '0');
+                    var day = date.getDate().toString().padStart(2, '0');
+                    return year + '-' + month + '-' + day;
+                }
+                function search() {
+                    var startDate = formatDate(document.getElementById('start-date').value);
+                    var endDate = formatDate(document.getElementById('end-date').value);
+                    var province = document.getElementById('province_selected').value;
+                    var district = document.getElementById('district_selected').value;
+                    var brand = document.getElementById('brand_selected').value;
+                    var transmission = document.querySelector('input[name="transmission"]:checked');
 
-    // เพิ่มการตรวจสอบค่าว่างสำหรับ "district" และ "brand"
-    if (district.trim() === '') {
-        district = 'all'; // กำหนดค่าเริ่มต้นเป็น 'all' หรือค่าอื่นที่เหมาะสม
-    }
-    if (brand.trim() === '') {
-        brand = 'all'; // กำหนดค่าเริ่มต้นเป็น 'all' หรือค่าอื่นที่เหมาะสม
-    }
-    if (province.trim() === '') {
-        province = 'all'; // กำหนดค่าเริ่มต้นเป็น 'all' หรือค่าอื่นที่เหมาะสม
-    }
-    
-    // ตรวจสอบการเลือก transmission
-    if (transmission) {
-        transmission = transmission.value;
-    } else {
-        transmission = 'all'; // กำหนดค่าเริ่มต้นเป็น 'all' หากไม่มีการเลือก
-    }
+                    // เพิ่มการตรวจสอบค่าว่างสำหรับ "district" และ "brand"
+                    if (district.trim() === '') {
+                        district = 'all'; // กำหนดค่าเริ่มต้นเป็น 'all' หรือค่าอื่นที่เหมาะสม
+                    }
+                    if (brand.trim() === '') {
+                        brand = 'all'; // กำหนดค่าเริ่มต้นเป็น 'all' หรือค่าอื่นที่เหมาะสม
+                    }
+                    if (province.trim() === '') {
+                        province = 'all'; // กำหนดค่าเริ่มต้นเป็น 'all' หรือค่าอื่นที่เหมาะสม
+                    }
 
-    // รหัสที่มีอยู่ก่อน
-    // Perform any necessary validations before redirecting to viewcars.php
-    // For example, check if all required fields are filled
+                    // ตรวจสอบการเลือก transmission
+                    if (transmission) {
+                        transmission = transmission.value;
+                    } else {
+                        transmission = 'all'; // กำหนดค่าเริ่มต้นเป็น 'all' หากไม่มีการเลือก
+                    }
 
-    // Redirect to viewcars.php with the search parameters
-    var params = "?start-date=" + startDate + "&end-date=" + endDate + "&province=" + province + "&district=" + district + "&brand=" + brand + "&transmission=" + transmission;
-    window.location.href = "viewcars.php" + params;
-    console.log(startDate);
-}
+                    // รหัสที่มีอยู่ก่อน
+                    // Perform any necessary validations before redirecting to viewcars.php
+                    // For example, check if all required fields are filled
+
+                    // Redirect to viewcars.php with the search parameters
+                    var params = "?start-date=" + startDate + "&end-date=" + endDate + "&province=" + province + "&district=" + district + "&brand=" + brand + "&transmission=" + transmission;
+                    window.location.href = "viewcars.php" + params;
+                    console.log(startDate);
+                }
 
                 $(document).on('click', '#suggestions-list1 li', function () {
                     var selectedOption = $(this).text();
@@ -182,7 +187,7 @@ function search() {
                     }
                 });
             </script>
-            
+
         </main>
     </div>
 

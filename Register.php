@@ -16,6 +16,9 @@ $day = $_POST['day'];
 $month = $_POST['month'];
 $year = $_POST['year'];
 $my_date = $year . '-' . date('m', strtotime($month)) . '-' . str_pad($day, 2, '0', STR_PAD_LEFT);
+$today = new DateTime();
+$birthday = new DateTime($my_date);
+$age = $today->diff($birthday)->y;
 
 if (empty($email)) {
     $_SESSION['error'] = 'Please enter your email.';
@@ -56,7 +59,11 @@ else if (empty($gender)) {
 else if (!checkdate(date('m', strtotime($month)), $day, $year)) {
     $_SESSION['error'] = 'Invalid date of birth.';
     header("location: RegisterForm.php");
-} 
+}
+else if ($age < 18) {
+    $_SESSION['error'] = 'You must be at least 18 years old to register.';
+    header("location: RegisterForm.php");
+}
 else if (empty($_POST['interestedcar'])) {
     $_SESSION['error'] = 'Please select the car you are interested in.';
     header("location: RegisterForm.php");
