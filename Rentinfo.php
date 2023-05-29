@@ -14,7 +14,8 @@
 
     $sql1 = "SELECT c.*,b.* 
     FROM car_info c
-    JOIN brand_info b ON c.model_id = b.model_id 
+    JOIN brand_info b ON c.model_id = b.model_id
+    JOIN client cl ON cl.client_id = c.client_id 
     WHERE license_plate='$license_plate'";
     $result1 = mysqli_query($con,$sql1);
     $car = mysqli_fetch_assoc($result1);
