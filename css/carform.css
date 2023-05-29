@@ -213,10 +213,9 @@ input[type=file] {
 
 .imgofcar img {
     width: 250px;
-    height: 150px;
+    height: 180px;
     border-radius: 20px;
     justify-content: center;
-    height: auto;
     object-fit: cover;
 }
 
