@@ -29,27 +29,30 @@
     if (!$result2) {
         die('Error: ' . mysqli_error($con));
     }
-    $rentals = array(); // Initialize an empty array to store the rental data
+    $rentals = array();
 
     while ($row = mysqli_fetch_assoc($result2)) {
-        $rentals[] = $row; // Append each row to the rentals array
+        $rentals[] = $row; 
     }
 
     $money = 0;
     $count = 0;
 
     function getRentalStatus($startDate, $endDate) {
-        $currentDate = date('Y-m-d');
-        if ($startDate == '0000-00-00' && $endDate == '0000-00-00') {
-            return "There are currently no rentals";
-        }
-        if ($currentDate < $startDate) {
-            return "Soon rental";
-        } elseif ($currentDate >= $startDate && $currentDate <= $endDate) {
-            return "Currently Renting";
+        date_default_timezone_set('Asia/Bangkok'); // Replace 'Your/Timezone' with your actual timezone
+
+        $currentDateTime = date('Y-m-d H:i:s');
+        
+        
+        if ($startDate == '0000-00-00 00:00:00' && $endDate == '0000-00-00 00:00:00') {
+            echo "There are currently no rentals";
+        } elseif ($currentDateTime < $startDate) {
+            echo "Soon rental";
+        } elseif ($currentDateTime >= $startDate && $currentDateTime <= $endDate) {
+            echo "Currently Renting";
         } else {
-            return "There are currently no rentals";
-        }
+            echo "There are currently no rentals";
+        }        
     }
     
 ?>
